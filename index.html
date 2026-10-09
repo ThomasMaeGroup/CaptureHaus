@@ -1,26 +1,535 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Giraffe360 — Microsite</title>
-  <meta name="description" content="One camera visit. Photos, virtual tours, floor plans, video and marketing — all from Giraffe360.">
+  <title>Brand Name | 360° Virtual Tours, 2D &amp; 3D Floor Plans, Walkthroughs</title>
+  <meta name="description" content="Immersive 360° virtual tours, accurate 2D and 3D floor plans and full walkthroughs, all captured in one visit. For estate agents, restaurants, pubs, shops and developers.">
+  <meta name="theme-color" content="#1a222e">
+  <meta property="og:title" content="Brand Name | Let them walk through before they walk in">
+  <meta property="og:description" content="360° virtual tours, 2D &amp; 3D floor plans and full walkthroughs, captured in a single visit.">
+  <meta property="og:image" content="assets/img/hero-living.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <!-- Placeholder shell — sections get built out once the design brief lands. -->
-  <header class="site-header container">
-    <strong>Giraffe360</strong>
-    <a class="btn btn--signature" href="#contact">Book a demo</a>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <!-- PLACEHOLDER BRAND: search "Brand Name" and ".brand__mark" to swap in the real name + logo -->
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="brand" href="#top" aria-label="Brand Name home">
+        <span class="brand__mark" aria-hidden="true">Logo</span>
+        <span class="brand__name">Brand Name</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="#capture">What we capture</a>
+        <a href="#sectors">Who it's for</a>
+        <a href="#process">How it works</a>
+        <a href="#faqs">FAQs</a>
+        <a class="btn btn--signature site-nav__cta" href="#contact">Get a quote</a>
+      </nav>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
   </header>
 
-  <main>
-    <section class="container" style="padding:96px var(--gutter)">
-      <h1>Awaiting design brief</h1>
-      <p>Project scaffolded. Brand tokens loaded from the live Giraffe360 site.</p>
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <video class="hero__media" autoplay muted loop playsinline preload="auto" poster="assets/img/poster-hero-360.jpg" aria-hidden="true">
+        <source src="assets/video/hero-360-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
+        <source src="assets/video/hero-360.mp4" type="video/mp4">
+      </video>
+      <div class="hero__scrim" aria-hidden="true"></div>
+
+      <div class="container hero__content">
+        <p class="eyebrow eyebrow--light"><span class="dot"></span> 360° tours · Floor plans · Walkthroughs</p>
+        <h1 class="hero__title">Let them walk through <em>before</em> they walk in.</h1>
+        <p class="hero__lede">We capture any space in a single visit and turn it into immersive 360° virtual tours, accurate 2D &amp; 3D floor plans and full walkthroughs that sell, let and fill it faster.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--signature btn--lg" href="#contact">Get a quote <span aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost btn--lg" href="#capture">See what we capture</a>
+        </div>
+      </div>
+
+      <div class="container hero__sectors">
+        <span class="hero__sectors-label">Built for</span>
+        <a href="#contact" data-sector="Estate agent / lettings">Estate agents</a>
+        <a href="#contact" data-sector="Restaurant / café">Restaurants</a>
+        <a href="#contact" data-sector="Pub / bar">Pubs &amp; bars</a>
+        <a href="#contact" data-sector="Shop / retail">Shops</a>
+        <a href="#contact" data-sector="Property developer">Developers</a>
+      </div>
     </section>
+
+    <!-- ============ TICKER ============ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>360° virtual tours</span><span>2D floor plans</span><span>3D floor plans</span><span>Full walkthroughs</span><span>HDR photography</span><span>LiDAR-measured</span>
+        <span>360° virtual tours</span><span>2D floor plans</span><span>3D floor plans</span><span>Full walkthroughs</span><span>HDR photography</span><span>LiDAR-measured</span>
+      </div>
+    </div>
+
+    <!-- ============ WHAT WE CAPTURE ============ -->
+    <section class="section capture" id="capture">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">What we capture</p>
+          <h2 class="section-title">One visit.<br>Every view of your space.</h2>
+          <p class="section-lede">Our camera captures HDR imagery, 360° panoramas and LiDAR measurements together. That single capture gives you everything below, ready to share anywhere.</p>
+        </header>
+
+        <!-- 01 360 tours -->
+        <article class="feature reveal">
+          <div class="feature__media">
+            <video data-lazy-video muted loop playsinline preload="none" poster="assets/img/poster-extra-room-highlight.jpg">
+              <source data-src="assets/video/extra-room-highlight.mp4" type="video/mp4">
+            </video>
+            <span class="feature__tag">Interactive</span>
+          </div>
+          <div class="feature__body">
+            <span class="feature__num">01</span>
+            <h3>360° virtual tours</h3>
+            <p>Bright, sharp, HDR 360° tours that let people move room to room from any phone, tablet, laptop or VR headset. They choose where to look, so they understand the space before they visit.</p>
+            <ul class="ticks">
+              <li>Click-to-move hotspots between every room</li>
+              <li>Share by link, embed on your website, add to listings</li>
+              <li>Works on any device. No app needed</li>
+            </ul>
+            <a class="btn btn--dark" href="#contact" data-service="360° virtual tour">Quote for a 360° tour</a>
+          </div>
+        </article>
+
+        <!-- 02 2D floor plans -->
+        <article class="feature feature--flip reveal">
+          <div class="feature__media feature__media--plans">
+            <img src="assets/img/floorplan-2d-furnished.jpg" alt="Furnished colour 2D floor plan" loading="lazy">
+            <img src="assets/img/floorplan-2d-classic.jpg" alt="Classic black-and-white 2D floor plan with room labels" loading="lazy">
+            <span class="feature__tag">LiDAR-measured</span>
+          </div>
+          <div class="feature__body">
+            <span class="feature__num">02</span>
+            <h3>2D floor plans</h3>
+            <p>Clear, accurately measured floor plans drawn from LiDAR scan data, not a tape measure and guesswork. Choose classic black and white, or furnished and in colour for real impact.</p>
+            <ul class="ticks">
+              <li>Room dimensions and total floor area</li>
+              <li>Furnished or classic styles to match your brand</li>
+              <li>Print-ready for brochures and window cards</li>
+            </ul>
+            <a class="btn btn--dark" href="#contact" data-service="2D floor plan">Quote for floor plans</a>
+          </div>
+        </article>
+
+        <!-- 03 3D floor plans -->
+        <article class="feature reveal">
+          <div class="feature__media feature__media--light">
+            <video data-lazy-video muted loop playsinline preload="none" poster="assets/img/poster-service-3d-floorplan.jpg">
+              <source data-src="assets/video/service-3d-floorplan.mp4" type="video/mp4">
+            </video>
+            <span class="feature__tag">Rotate &amp; explore</span>
+          </div>
+          <div class="feature__body">
+            <span class="feature__num">03</span>
+            <h3>3D floor plans</h3>
+            <p>See the whole layout at once. Interactive 3D floor plans show how rooms connect and flow, so buyers, diners and tenants can picture themselves in the space in seconds.</p>
+            <ul class="ticks">
+              <li>Interactive 3D model of the full layout</li>
+              <li>Jump from the plan straight into the 360° tour</li>
+              <li>Perfect for open-plan, multi-level and fit-out spaces</li>
+            </ul>
+            <a class="btn btn--dark" href="#contact" data-service="3D floor plan">Quote for 3D floor plans</a>
+          </div>
+        </article>
+
+        <!-- 04 Walkthroughs -->
+        <article class="feature feature--flip reveal">
+          <div class="feature__media">
+            <video data-lazy-video muted loop playsinline preload="none" poster="assets/img/poster-service-walkthrough.jpg">
+              <source data-src="assets/video/service-walkthrough.mp4" type="video/mp4">
+            </video>
+            <span class="feature__tag">Video</span>
+          </div>
+          <div class="feature__body">
+            <span class="feature__num">04</span>
+            <h3>Full property walkthroughs</h3>
+            <p>Smooth, cinematic walkthrough videos that guide viewers through the entire property from front door to back garden. Ready for your website, listings, YouTube and social.</p>
+            <ul class="ticks">
+              <li>Full-length walkthroughs and short social cuts</li>
+              <li>Landscape and vertical formats</li>
+              <li>Room highlights, twilight and exterior shots</li>
+            </ul>
+            <a class="btn btn--dark" href="#contact" data-service="Full walkthrough video">Quote for a walkthrough</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ LIDAR STATEMENT ============ -->
+    <section class="statement">
+      <video data-lazy-video class="statement__media" muted loop playsinline preload="none" poster="assets/img/poster-lidar-point-cloud.jpg" aria-hidden="true">
+        <source data-src="assets/video/lidar-point-cloud.mp4" type="video/mp4">
+      </video>
+      <div class="container statement__inner">
+        <p class="eyebrow eyebrow--light">Measured, not guessed</p>
+        <h2 class="statement__title">Every corner scanned with <span class="hl">LiDAR</span>, so every plan and tour is accurate.</h2>
+        <dl class="stats">
+          <div><dt>1</dt><dd>visit to capture everything</dd></div>
+          <div><dt>4+</dt><dd>formats from one capture</dd></div>
+          <div><dt>Any</dt><dd>device, any browser</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ EXTRAS ============ -->
+    <section class="section extras">
+      <div class="container">
+        <header class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Also included</p>
+            <h2 class="section-title">Photos that stop the scroll.</h2>
+          </div>
+          <p class="section-lede">Every capture also gives you professional HDR photography, enhanced and ready to publish. Drag the slider to see a day shot turned into a twilight hero image.</p>
+        </header>
+
+        <div class="extras__grid">
+          <figure class="compare reveal" data-compare>
+            <img src="assets/img/sector-pub.jpg" alt="Stone building at twilight with warm lit windows" loading="lazy" width="1800" height="1350">
+            <div class="compare__before">
+              <img src="assets/img/hdr-before.jpg" alt="The same stone building photographed in daylight" loading="lazy" width="1800" height="1350">
+            </div>
+            <span class="compare__label compare__label--l">Before</span>
+            <span class="compare__label compare__label--r">After</span>
+            <div class="compare__handle" aria-hidden="true"></div>
+            <input class="compare__range" type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+          </figure>
+
+          <div class="extras__tiles">
+            <div class="tile reveal">
+              <video data-lazy-video muted loop playsinline preload="none" poster="assets/img/poster-extra-twilight.jpg">
+                <source data-src="assets/video/extra-twilight.mp4" type="video/mp4">
+              </video>
+              <p class="tile__cap">Twilight &amp; sky enhancement</p>
+            </div>
+            <div class="tile reveal">
+              <img src="assets/img/gallery-1.jpg" alt="HDR photo of a kitchen with dark ceiling and island" loading="lazy" width="1600" height="1243">
+              <p class="tile__cap">HDR photography</p>
+            </div>
+            <div class="tile reveal">
+              <img src="assets/img/gallery-3.jpg" alt="Restaurant interior with virtual staging: velvet sofa and dining tables" loading="lazy" width="1600" height="1009">
+              <p class="tile__cap">Virtual staging</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTORS ============ -->
+    <section class="section sectors" id="sectors">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Who it's for</p>
+          <h2 class="section-title">Any space worth seeing.</h2>
+          <p class="section-lede">From family homes to busy bars, we capture spaces people want to see before they commit.</p>
+        </header>
+
+        <!-- Featured: estate agents -->
+        <article class="sector sector--feature reveal">
+          <img class="sector__img" src="assets/img/sector-agents.jpg" alt="Modern single-storey home with pool and garden" loading="lazy" width="2000" height="1500">
+          <div class="sector__body">
+            <span class="sector__kicker">Estate agents &amp; lettings</span>
+            <h3>Win more instructions. Get serious viewers.</h3>
+            <p>Give vendors and landlords a marketing pack that shows you mean business. Buyers and tenants tour online first, so the people who book a viewing are already interested.</p>
+            <ul class="ticks ticks--light">
+              <li>Stand out on Rightmove, Zoopla &amp; OnTheMarket</li>
+              <li>Fewer wasted viewings, faster offers</li>
+              <li>Floor plans, tour, photos &amp; video from one visit</li>
+            </ul>
+            <a class="btn btn--signature" href="#contact" data-sector="Estate agent / lettings">Get an agent quote</a>
+          </div>
+        </article>
+
+        <div class="sectors__grid">
+          <article class="sector reveal">
+            <img class="sector__img" src="assets/img/sector-restaurant.jpg" alt="Restaurant interior with long dining table and BISTRO sign" loading="lazy" width="1800" height="1350">
+            <div class="sector__body">
+              <span class="sector__kicker">Restaurants &amp; cafés</span>
+              <h3>Let diners pick their table before they book.</h3>
+              <p>Show off your atmosphere, private dining rooms and event spaces. Add the tour to Google, your website and booking pages.</p>
+              <a class="sector__link" href="#contact" data-sector="Restaurant / café">Enquire <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="sector reveal">
+            <img class="sector__img" src="assets/img/sector-pub.jpg" alt="Stone pub building at twilight" loading="lazy" width="1800" height="1350">
+            <div class="sector__body">
+              <span class="sector__kicker">Pubs &amp; bars</span>
+              <h3>Fill function rooms and beer gardens.</h3>
+              <p>Help groups and party planners see the bar, function room and garden before they enquire. Great for leasehold and tenancy listings too.</p>
+              <a class="sector__link" href="#contact" data-sector="Pub / bar">Enquire <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="sector reveal">
+            <img class="sector__img" src="assets/img/sector-retail.jpg" alt="Industrial-style open space with kitchen and dining area" loading="lazy" width="1800" height="1330">
+            <div class="sector__body">
+              <span class="sector__kicker">Shops &amp; retail</span>
+              <h3>Open your doors online, 24/7.</h3>
+              <p>Let customers browse your store virtually, or help landlords and agents market retail units with accurate floor areas.</p>
+              <a class="sector__link" href="#contact" data-sector="Shop / retail">Enquire <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="sector reveal">
+            <img class="sector__img" src="assets/img/sector-developer.jpg" alt="Capture camera on a tripod outside a contemporary new-build home" loading="lazy" width="1800" height="1200">
+            <div class="sector__body">
+              <span class="sector__kicker">Property developers</span>
+              <h3>Sell show homes and plots remotely.</h3>
+              <p>Capture show homes, finished units and build progress. Give off-plan and overseas buyers a true sense of space and finish.</p>
+              <a class="sector__link" href="#contact" data-sector="Property developer">Enquire <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+
+        <p class="sectors__more">Also capturing hotels, holiday lets, offices, venues, gyms and commercial units. <a href="#contact" data-sector="Other">Tell us about your space →</a></p>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section process" id="process">
+      <div class="container process__inner">
+        <div class="process__media reveal">
+          <video data-lazy-video muted loop playsinline preload="none" poster="assets/img/poster-camera-kit.jpg">
+            <source data-src="assets/video/camera-kit.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="process__body">
+          <p class="eyebrow">How it works</p>
+          <h2 class="section-title">From booking to live in four steps.</h2>
+          <ol class="steps">
+            <li class="reveal">
+              <span class="steps__n">1</span>
+              <div><h3>Tell us about your space</h3><p>Fill in the quick form below. We'll confirm a price and a time that suits you, including before opening or after closing.</p></div>
+            </li>
+            <li class="reveal">
+              <span class="steps__n">2</span>
+              <div><h3>We capture it in one visit</h3><p>Our camera scans each room automatically, collecting HDR photos, 360° imagery and LiDAR measurements together.</p></div>
+            </li>
+            <li class="reveal">
+              <span class="steps__n">3</span>
+              <div><h3>We process &amp; polish</h3><p>Tours are stitched, floor plans drawn and photos enhanced, with sky, twilight and staging edits where you want them.</p></div>
+            </li>
+            <li class="reveal">
+              <span class="steps__n">4</span>
+              <div><h3>You share everywhere</h3><p>Get shareable links, website embeds and downloadable files, ready for listings, social, Google and print.</p></div>
+            </li>
+          </ol>
+          <a class="btn btn--signature btn--lg" href="#contact">Book your capture <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="gallery" aria-label="Example captures">
+      <div class="gallery__track">
+        <img src="assets/img/gallery-1.jpg" alt="Kitchen with dark ceiling, island and pendant lights" loading="lazy" width="1600" height="1243">
+        <img src="assets/img/hero-living.jpg" alt="Open-plan living space with timber ceiling" loading="lazy" width="2000" height="1593">
+        <img src="assets/img/gallery-2.jpg" alt="Bright white kitchen with breakfast bar" loading="lazy" width="1600" height="1220">
+        <img src="assets/img/floorplan-3d-tablet.jpg" alt="Person viewing a 3D floor plan on a tablet" loading="lazy" width="1600" height="1067">
+        <img src="assets/img/gallery-4.jpg" alt="Person viewing a property listing on a phone outside a modern home" loading="lazy" width="1600" height="1067">
+        <img src="assets/img/camera-on-site.jpg" alt="Capture camera on a tripod in a kitchen" loading="lazy" width="1600" height="1167">
+      </div>
+    </section>
+
+    <!-- ============ CTA BAND ============ -->
+    <section class="cta-band">
+      <div class="container cta-band__inner">
+        <h2>Ready to show off your space?</h2>
+        <a class="btn btn--dark btn--lg" href="#contact">Get your free quote <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- ============ FAQS ============ -->
+    <section class="section faqs" id="faqs">
+      <div class="container faqs__inner">
+        <header class="faqs__head">
+          <p class="eyebrow">FAQs</p>
+          <h2 class="section-title">Good questions.</h2>
+          <p class="section-lede">Can't see yours? Ask us in the form and we'll get back to you.</p>
+          <a class="btn btn--dark" href="#contact">Ask a question</a>
+        </header>
+
+        <div class="faq-list">
+          <details class="faq" open>
+            <summary>What exactly is a 360° virtual tour?</summary>
+            <div class="faq__a"><p>It's an interactive, walk-through view of your space made from high-resolution 360° images. Visitors click to move between rooms and drag to look around, on any phone, tablet or computer, or in a VR headset. Nothing to download.</p></div>
+          </details>
+          <details class="faq">
+            <summary>What's the difference between 2D and 3D floor plans?</summary>
+            <div class="faq__a"><p>A 2D floor plan is the classic top-down drawing with room sizes and total floor area, ideal for listings and print. A 3D floor plan is an interactive model you can rotate to see how rooms connect. It's great for open-plan, multi-level and commercial layouts.</p></div>
+          </details>
+          <details class="faq">
+            <summary>How accurate are the floor plans?</summary>
+            <div class="faq__a"><p>Very. Our camera uses LiDAR laser scanning to measure every room as it captures, so dimensions come from the scan data rather than a tape measure. Plans are drawn to recognised measurement standards.</p></div>
+          </details>
+          <details class="faq">
+            <summary>How long does a capture take?</summary>
+            <!-- TODO: confirm typical on-site times -->
+            <div class="faq__a"><p>It depends on the size of the space, but most homes, restaurants and shops are captured in a single visit. Each room takes just a few minutes. We'll give you a time estimate with your quote.</p></div>
+          </details>
+          <details class="faq">
+            <summary>Will it disrupt my business?</summary>
+            <div class="faq__a"><p>No. For restaurants, pubs and shops we can capture before opening or after closing. The camera works on its own once it's positioned, and the space just needs to be tidy and clear of people for each scan.</p></div>
+          </details>
+          <details class="faq">
+            <summary>How quickly will I receive everything?</summary>
+            <!-- TODO: confirm turnaround -->
+            <div class="faq__a"><p>Fast. Photos, tours and floor plans are processed in the cloud straight after capture, and we'll confirm your delivery date when you book.</p></div>
+          </details>
+          <details class="faq">
+            <summary>Where can I use the tour and floor plans?</summary>
+            <div class="faq__a"><p>Anywhere. Share by link, embed on your website, add to property portals that accept virtual tour links, post to social media, add to your Google Business Profile, or print the floor plans in brochures and window cards.</p></div>
+          </details>
+          <details class="faq">
+            <summary>How do I prepare my space?</summary>
+            <div class="faq__a"><p>Treat it like a photo shoot: declutter surfaces, turn on all the lights, open blinds and curtains, and move cars off the drive. We'll send you a simple checklist before your capture.</p></div>
+          </details>
+          <details class="faq">
+            <summary>How much does it cost?</summary>
+            <div class="faq__a"><p>Pricing depends on the size of the space and which outputs you need. Tell us a little about your project in the form and we'll send a clear, no-obligation quote. Multi-property and agency packages are available.</p></div>
+          </details>
+          <details class="faq">
+            <summary>Which areas do you cover?</summary>
+            <!-- TODO: add coverage area -->
+            <div class="faq__a"><p>Get in touch with your postcode and we'll confirm availability. We regularly travel for larger projects and multi-site work.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="container contact__inner">
+        <div class="contact__intro">
+          <p class="eyebrow eyebrow--light">Get a quote</p>
+          <h2 class="section-title">Let's capture your space.</h2>
+          <p class="section-lede">Tell us a little about your project and we'll come back with a clear, no-obligation quote.</p>
+          <ul class="ticks ticks--light">
+            <li>No-obligation quote</li>
+            <li>Flexible times, including out of hours</li>
+            <li>Packages for agencies &amp; multi-site businesses</li>
+          </ul>
+          <img class="contact__img" src="assets/img/camera-in-hand.jpg" alt="Capture camera being carried outside a modern home" loading="lazy" width="1600" height="1066">
+        </div>
+
+        <!-- Form posts to Formspree (or any form endpoint). Replace YOUR_FORM_ID. -->
+        <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-form novalidate>
+          <div class="form__row">
+            <label class="field">
+              <span>Name <b aria-hidden="true">*</b></span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span>Company</span>
+              <input type="text" name="company" autocomplete="organization">
+            </label>
+          </div>
+          <div class="form__row">
+            <label class="field">
+              <span>Email <b aria-hidden="true">*</b></span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label class="field">
+              <span>Phone</span>
+              <input type="tel" name="phone" autocomplete="tel">
+            </label>
+          </div>
+
+          <label class="field">
+            <span>What type of space? <b aria-hidden="true">*</b></span>
+            <select name="sector" required data-sector-select>
+              <option value="">Choose one…</option>
+              <option>Estate agent / lettings</option>
+              <option>Restaurant / café</option>
+              <option>Pub / bar</option>
+              <option>Shop / retail</option>
+              <option>Property developer</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <fieldset class="field field--checks">
+            <legend>What do you need?</legend>
+            <label class="check"><input type="checkbox" name="services[]" value="360° virtual tour"><span>360° virtual tour</span></label>
+            <label class="check"><input type="checkbox" name="services[]" value="2D floor plan"><span>2D floor plan</span></label>
+            <label class="check"><input type="checkbox" name="services[]" value="3D floor plan"><span>3D floor plan</span></label>
+            <label class="check"><input type="checkbox" name="services[]" value="Full walkthrough video"><span>Full walkthrough</span></label>
+            <label class="check"><input type="checkbox" name="services[]" value="HDR photography"><span>HDR photography</span></label>
+          </fieldset>
+
+          <div class="form__row">
+            <label class="field">
+              <span>Postcode</span>
+              <input type="text" name="postcode" autocomplete="postal-code">
+            </label>
+            <label class="field">
+              <span>Approx. size</span>
+              <select name="size">
+                <option value="">Not sure</option>
+                <option>Under 1,000 sq ft</option>
+                <option>1,000–2,500 sq ft</option>
+                <option>2,500–5,000 sq ft</option>
+                <option>5,000+ sq ft</option>
+                <option>Multiple properties</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Anything else?</span>
+            <textarea name="message" rows="4" placeholder="Number of properties, timescales, questions…"></textarea>
+          </label>
+
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <button class="btn btn--signature btn--lg btn--block" type="submit">Request my quote <span aria-hidden="true">→</span></button>
+          <p class="form__note">We'll only use your details to respond to your enquiry.</p>
+          <p class="form__status" role="status" aria-live="polite" data-form-status></p>
+        </form>
+      </div>
+    </section>
+
   </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <a class="brand brand--footer" href="#top">
+        <span class="brand__mark" aria-hidden="true">Logo</span>
+        <span class="brand__name">Brand Name</span>
+      </a>
+      <nav class="site-footer__nav" aria-label="Footer">
+        <a href="#capture">What we capture</a>
+        <a href="#sectors">Who it's for</a>
+        <a href="#process">How it works</a>
+        <a href="#faqs">FAQs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="site-footer__small">Captured with Giraffe360 technology · © <span data-year>2026</span> Brand Name</p>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky CTA -->
+  <a class="sticky-cta" href="#contact" data-sticky-cta>Get a quote <span aria-hidden="true">→</span></a>
 
   <script src="assets/js/main.js" defer></script>
 </body>

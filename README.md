@@ -1,22 +1,38 @@
-# Giraffe360 Microsite
+# 360 Capture Microsite
 
-Static HTML/CSS microsite selling the Giraffe360 camera + Content Studio. No build step.
+Single-page static site selling 360° virtual tours, 2D & 3D floor plans and full walkthroughs
+to estate agents, restaurants, pubs, shops and developers. Plain HTML/CSS/JS with no build step.
 
 ## View locally
     python3 -m http.server 8000   # then open http://localhost:8000
 
-## Structure
-    index.html              page shell (placeholder until brief)
-    PRODUCT-NOTES.md        product research: features, specs, plans, proof points, brand
-    brief/                  drop the design brief here
-    kit/                    drop the client brand/sales kit here (logos, fonts, imagery, copy)
-    assets/css/base.css     reset + brand tokens (from live giraffe360.com CSS)
-    assets/css/site.css     section/page styles
-    assets/js/main.js       interactions
-    assets/fonts/           licensed brand fonts from the kit
-    assets/img/reference/   images pulled from giraffe360.com for reference; replace with kit assets
+## Deploy
+Push to GitHub and enable **Settings → Pages → Deploy from branch (main / root)**.
+`.nojekyll` is included so files are served as-is. Any static host works (Netlify, Vercel, S3…).
 
-## Next steps
-1. Add brief to /brief and kit to /kit
-2. Swap tokens/fonts in base.css if the kit differs
-3. Build sections per brief
+## Structure
+    index.html              the whole page (sections: hero, capture, LiDAR, extras, sectors,
+                            process, gallery, CTA, FAQs, contact form, footer)
+    assets/css/base.css     reset + brand tokens (colours, fonts, buttons)
+    assets/css/site.css     section styles + responsive rules
+    assets/js/main.js       nav, lazy video, before/after slider, form prefill + submit
+    assets/img/             images (posters for each video are poster-*.jpg)
+    assets/video/           mp4 loops
+    PRODUCT-NOTES.md        Giraffe360 product research
+
+## Before going live
+- [ ] **Brand**: replace "Brand Name" (title, meta, header, footer) and the dashed `.brand__mark`
+      "Logo" box with the real logo (`<img>` or inline SVG). Colours live in `base.css :root`.
+- [ ] **Form**: create a form at formspree.io (or similar) and replace `YOUR_FORM_ID` in the
+      `<form action>`. Until then it runs in demo mode and shows a success message without sending.
+- [ ] **Media**: images/video are placeholders from giraffe360.com. Replace them with your own,
+      keeping the same filenames (or update the paths). Export a poster frame for each video.
+- [ ] **FAQ TODOs**: confirm on-site capture time, delivery turnaround and coverage area
+      (search `TODO` in index.html).
+- [ ] Add favicon, real `og:image` absolute URL, and analytics if wanted.
+
+## How the CTA buttons work
+Every "Get a quote" / "Enquire" button is an anchor to `#contact`. Buttons carrying
+`data-sector="…"` or `data-service="…"` pre-select that option in the form, and the form pulses
+briefly so the eye lands on it. A sticky "Get a quote" bar appears on mobile once you scroll
+past the hero (hidden while the form is on screen).
