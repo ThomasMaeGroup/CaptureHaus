@@ -21,8 +21,7 @@ Push to GitHub and enable **Settings → Pages → Deploy from branch (main / ro
     PRODUCT-NOTES.md        Giraffe360 product research
 
 ## Before going live
-- [ ] **Brand**: replace "Brand Name" (title, meta, header, footer) and the dashed `.brand__mark`
-      "Logo" box with the real logo (`<img>` or inline SVG). Colours live in `base.css :root`.
+- [x] **Brand**: Capture House logos in `assets/img/logo/` (dark = white text for dark backgrounds, light = navy text for the white scrolled header).
 - [ ] **Form**: create a form at formspree.io (or similar) and replace `YOUR_FORM_ID` in the
       `<form action>`. Until then it runs in demo mode and shows a success message without sending.
 - [ ] **Media**: images/video are placeholders from giraffe360.com. Replace them with your own,
