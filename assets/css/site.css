@@ -41,12 +41,12 @@ section[id] { scroll-margin-top: 84px; }
 
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
 /* Logo: dark version (white text) over the hero/dark areas, light version (navy text) once the header turns white */
-.brand__logo { display: block; height: 38px; width: auto; }
+.brand__logo { display: block; height: 44px; width: auto; }
 .brand__logo--light { display: none; }
 .site-header.is-scrolled .brand__logo--dark { display: none; }
 .site-header.is-scrolled .brand__logo--light { display: block; }
-.brand--footer .brand__logo { height: 44px; }
-@media (max-width: 599px) { .brand__logo { height: 28px; } .brand--footer .brand__logo { height: 32px; } }
+.brand--footer .brand__logo { height: 52px; }
+@media (max-width: 599px) { .brand__logo { height: 34px; } .brand--footer .brand__logo { height: 40px; } }
 
 .site-nav { display: flex; align-items: center; gap: 32px; }
 .site-nav a:not(.btn) { text-decoration: none; font-weight: 500; font-size: 15px; opacity: .9; position: relative; }
