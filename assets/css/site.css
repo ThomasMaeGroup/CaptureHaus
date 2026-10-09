@@ -1,0 +1,2 @@
+/* Page/section styles for the microsite — built out from the design brief. */
+.site-header { display: flex; align-items: center; justify-content: space-between; padding-block: 20px; }

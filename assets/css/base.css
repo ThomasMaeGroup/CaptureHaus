@@ -1,0 +1,74 @@
+/* Giraffe360 microsite — base tokens + reset
+   Colour tokens pulled from giraffe360.com production CSS (Oct 2026).
+   Swap/extend once the brand kit in /kit is unpacked. */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Signature yellow */
+  --c-yellow-100: #fffdf3;
+  --c-yellow-200: #fff7d8;
+  --c-yellow-300: #fff0b5;
+  --c-yellow-400: #ffe586; /* signature accent surface */
+  --c-yellow-500: #ffd54a;
+  --c-yellow-600: #ffc600; /* signature (primary CTA) */
+  --c-yellow-700: #f5be00; /* hover */
+  --c-yellow-800: #ebb600; /* pressed */
+
+  /* Ink / greys */
+  --c-ink:      #1a222e;   /* text-primary, dark buttons, inverted surfaces */
+  --c-ink-hover:#121821;
+  --c-grey-100: #f1f3f3;   /* page surface */
+  --c-grey-200: #dcdee0;
+  --c-grey-300: #bcbfc2;
+  --c-grey-400: #8b9197;
+  --c-grey-500: #697178;
+  --c-grey-600: #525a62;
+  --c-grey-700: #3d454e;
+  --c-grey-800: #2d343d;
+  --c-white:    #ffffff;
+
+  /* Secondary surfaces used sparingly on the live site */
+  --c-coral:  #fcbfb1;
+  --c-purple: #cfd1f2;
+  --c-focus:  #0167e5;
+
+  /* Type — live site uses Sora (headings) + Google Sans (body, not on Google Fonts; Inter stands in) */
+  --f-heading: 'Sora', system-ui, sans-serif;
+  --f-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  --radius: 12px;
+  --radius-pill: 999px;
+  --max-w: 1280px;
+  --gutter: clamp(16px, 4vw, 40px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--c-ink);
+  background: var(--c-white);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: var(--f-heading); line-height: 1.1; margin: 0 0 .5em; font-weight: 600; letter-spacing: -0.02em; }
+p { margin: 0 0 1em; }
+img, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 2px; }
+
+.container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: .5em;
+  padding: .85em 1.5em; border-radius: var(--radius-pill);
+  font: 600 15px/1 var(--f-body); text-decoration: none; border: 0; cursor: pointer;
+  transition: background .15s ease;
+}
+.btn--signature { background: var(--c-yellow-600); color: var(--c-ink); }
+.btn--signature:hover { background: var(--c-yellow-700); }
+.btn--dark { background: var(--c-ink); color: var(--c-white); }
+.btn--dark:hover { background: var(--c-ink-hover); }
