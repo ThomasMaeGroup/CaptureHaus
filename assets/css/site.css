@@ -136,6 +136,13 @@ section[id] { scroll-margin-top: 84px; }
   position: absolute; left: 18px; top: 18px; padding: 8px 14px; border-radius: var(--radius-pill);
   background: var(--c-ink); color: var(--c-white); font: 600 12px/1 var(--f-body); letter-spacing: .06em; text-transform: uppercase;
 }
+.drone-card {
+  position: absolute; right: 6%; top: 50%; transform: translateY(-50%); height: 84%; aspect-ratio: 9 / 16;
+  border-radius: 18px; overflow: hidden; border: 3px solid var(--c-white); box-shadow: 0 24px 50px -16px rgba(26,34,46,.55);
+}
+.drone-card video { display: block; }
+.embed-launch { position: absolute; left: 18px; bottom: 18px; z-index: 2; box-shadow: 0 10px 30px -10px rgba(26,34,46,.5); }
+.feature__media iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 3; }
 .feature__num { display: block; font: 800 15px/1 var(--f-heading); color: var(--c-yellow-800); margin-bottom: 16px; letter-spacing: .04em; }
 .feature__body h3 { font-size: clamp(30px, 3.6vw, 48px); font-weight: 700; letter-spacing: -0.035em; }
 .feature__body p { font-size: 17px; color: var(--c-grey-600); }

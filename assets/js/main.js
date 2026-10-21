@@ -52,6 +52,22 @@ document.documentElement.classList.add('js');
   const heroVideo = document.querySelector('.hero__media');
   if (reduceMotion && heroVideo) heroVideo.pause();
 
+  /* ---------- Live tour / 3D plan embeds: load only on click ---------- */
+  document.querySelectorAll('[data-embed]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const media = btn.closest('.feature__media');
+      const frame = document.createElement('iframe');
+      frame.src = btn.dataset.embed;
+      frame.title = btn.dataset.embedTitle;
+      frame.allow = 'fullscreen; xr-spatial-tracking; gyroscope; accelerometer';
+      frame.allowFullscreen = true;
+      media.querySelector('video')?.pause();
+      media.appendChild(frame);
+      btn.remove();
+      frame.focus();
+    });
+  });
+
   /* ---------- Reveal on scroll ---------- */
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
