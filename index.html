@@ -57,7 +57,7 @@
         <p class="hero__lede">We capture any space in a single visit and turn it into immersive 360° virtual tours, accurate 2D &amp; 3D floor plans and full walkthroughs that sell, let and fill it faster.</p>
         <div class="hero__ctas">
           <a class="btn btn--signature btn--lg" href="#contact">Get a quote <span aria-hidden="true">→</span></a>
-          <a class="btn btn--ghost btn--lg" href="#capture">See what we capture</a>
+          <button class="btn btn--ghost btn--lg" type="button" data-tour-open>Take a live 360° tour <span aria-hidden="true">↗</span></button>
         </div>
       </div>
 
@@ -91,11 +91,14 @@
         <!-- 01 360 tours -->
         <article class="feature reveal">
           <div class="feature__media">
-            <video data-lazy-video muted loop playsinline preload="none" poster="assets/img/poster-extra-room-highlight.jpg">
-              <source data-src="assets/video/extra-room-highlight.mp4" type="video/mp4">
-            </video>
+            <div class="slideshow" data-slideshow>
+              <img src="assets/img/chapel-tour-lounge.jpg" alt="Open-plan living room looking through to the garden" loading="lazy" width="1400" height="1050">
+              <img src="assets/img/chapel-tour-kitchen.jpg" alt="Shaker kitchen with dining table" loading="lazy" width="1400" height="1050">
+              <img src="assets/img/chapel-tour-bedroom.jpg" alt="Loft bedroom with sloping ceiling" loading="lazy" width="1400" height="1050">
+              <img src="assets/img/chapel-tour-bathroom.jpg" alt="Bathroom with patterned floor tiles" loading="lazy" width="1400" height="1050">
+            </div>
             <span class="feature__tag">Interactive</span>
-            <button class="btn btn--signature embed-launch" type="button" data-embed="https://tour.giraffe360.com/66f621823c5d48bfbb70e15d98be770f/" data-embed-title="360° virtual tour of 1 Peartree Close, Purton">Explore a live tour <span aria-hidden="true">→</span></button>
+            <button class="btn btn--signature embed-launch" type="button" data-embed="https://tour.giraffe360.com/cc0ae0bac9154470acf861e047205e94/" data-embed-title="360° virtual tour of Chapel Gardens">Explore a live tour <span aria-hidden="true">→</span></button>
           </div>
           <div class="feature__body">
             <span class="feature__num">01</span>
@@ -367,15 +370,15 @@
     <section class="gallery" aria-label="Example captures">
       <div class="gallery__track">
         <img src="assets/img/peartree-kitchen.jpg" alt="Modern kitchen with island and pendant lights" loading="lazy" width="1600" height="1200">
-        <img src="assets/img/brooklyn-living.jpg" alt="Vaulted living room with galleried landing and inglenook fireplace" loading="lazy" width="1600" height="1200">
-        <img src="assets/img/clinic-studio.jpg" alt="Physio and Pilates studio with reformer beds under a glazed roof" loading="lazy" width="1600" height="900">
-        <img src="assets/img/floorplan-3d-tablet.jpg" alt="Person viewing a 3D floor plan on a tablet" loading="lazy" width="1600" height="1067">
+        <img src="assets/img/chapel-exterior.jpg" alt="Row of new-build three-storey townhouses with dormer windows" loading="lazy" width="1600" height="1200">
+        <img src="assets/img/chapel-living.jpg" alt="Bright living room with green sofa and French doors to the garden" loading="lazy" width="1600" height="1200">
         <img src="assets/img/peartree-exterior.jpg" alt="Detached new-build home with driveway and garage" loading="lazy" width="1800" height="1350">
         <img src="assets/img/cgi-mezzanine.jpg" alt="CGI render of a mezzanine lounge under timber roof trusses" loading="lazy" width="1536" height="1024">
         <img src="assets/img/drone-house.jpg" alt="Drone photo of a detached house with driveway and garage" loading="lazy" width="1600" height="1200">
         <img src="assets/img/cgi-bedroom.jpg" alt="CGI render of a calm bedroom with sage panelling" loading="lazy" width="1536" height="1024">
-        <img src="assets/img/agency-office.jpg" alt="Estate agency office with desks and property displays" loading="lazy" width="1600" height="1200">
-        <img src="assets/img/camera-on-site.jpg" alt="Capture camera on a tripod in a kitchen" loading="lazy" width="1600" height="1167">
+        <img src="assets/img/chapel-kitchen.jpg" alt="White shaker kitchen with oak floor and double oven" loading="lazy" width="1600" height="1200">
+        <img src="assets/img/chapel-bedroom.jpg" alt="Calm bedroom with shutters and abstract artwork" loading="lazy" width="1600" height="1200">
+        <img src="assets/img/chapel-garden.jpg" alt="Patio garden with bistro table and new fencing" loading="lazy" width="1600" height="1200">
       </div>
     </section>
 
@@ -539,6 +542,11 @@
     </section>
 
   </main>
+
+  <dialog class="tour-modal" data-tour-modal aria-label="Live 360° virtual tour">
+    <button class="tour-modal__close" type="button" data-tour-close aria-label="Close tour">&times;</button>
+    <iframe data-src="https://tour.giraffe360.com/cc0ae0bac9154470acf861e047205e94/" title="360° virtual tour of Chapel Gardens" allow="fullscreen; xr-spatial-tracking; gyroscope; accelerometer" allowfullscreen></iframe>
+  </dialog>
 
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">

@@ -52,6 +52,23 @@ document.documentElement.classList.add('js');
   const heroVideo = document.querySelector('.hero__media');
   if (reduceMotion && heroVideo) heroVideo.pause();
 
+  /* ---------- Slideshows: cross-fade between views while on screen ---------- */
+  document.querySelectorAll('[data-slideshow]').forEach((show) => {
+    const slides = [...show.children];
+    let i = 0;
+    let inView = false;
+    slides[0].classList.add('is-active');
+    if (reduceMotion || slides.length < 2) return;
+    new IntersectionObserver(([e]) => { inView = e.isIntersecting; }).observe(show);
+    const timer = setInterval(() => {
+      if (!show.isConnected) return clearInterval(timer);
+      if (!inView || document.hidden) return;
+      slides[i].classList.remove('is-active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('is-active');
+    }, 5500);
+  });
+
   /* ---------- Live tour / 3D plan embeds: load only on click ---------- */
   document.querySelectorAll('[data-embed]').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -62,11 +79,25 @@ document.documentElement.classList.add('js');
       frame.allow = 'fullscreen; xr-spatial-tracking; gyroscope; accelerometer';
       frame.allowFullscreen = true;
       media.querySelector('video')?.pause();
+      media.querySelector('[data-slideshow]')?.remove();
       media.appendChild(frame);
       btn.remove();
       frame.focus();
     });
   });
+
+  /* ---------- Hero: live tour in a full-screen dialog ---------- */
+  const tourModal = document.querySelector('[data-tour-modal]');
+  const tourOpen = document.querySelector('[data-tour-open]');
+  if (tourModal && tourOpen) {
+    const tourFrame = tourModal.querySelector('iframe');
+    tourOpen.addEventListener('click', () => {
+      if (!tourFrame.src) tourFrame.src = tourFrame.dataset.src;
+      tourModal.showModal();
+    });
+    tourModal.querySelector('[data-tour-close]').addEventListener('click', () => tourModal.close());
+    tourModal.addEventListener('click', (e) => { if (e.target === tourModal) tourModal.close(); });
+  }
 
   /* ---------- Reveal on scroll ---------- */
   const revealObserver = new IntersectionObserver((entries) => {
