@@ -300,35 +300,10 @@ section[id] { scroll-margin-top: 84px; }
 .contact__img { margin-top: 32px; border-radius: 20px; aspect-ratio: 16 / 10; object-fit: cover; width: 100%; }
 @media (max-width: 959px) { .contact__img { display: none; } }
 
-.form { background: var(--c-white); color: var(--c-ink); border-radius: 24px; padding: clamp(24px, 4vw, 44px); display: grid; gap: 18px; box-shadow: 0 40px 80px -40px rgba(0,0,0,.6); }
-.form__row { display: grid; gap: 18px; }
-@media (min-width: 600px) { .form__row { grid-template-columns: 1fr 1fr; } }
-.field { display: grid; gap: 8px; margin: 0; border: 0; padding: 0; min-width: 0; }
-.field > span, .field legend { font: 600 14px/1.2 var(--f-body); padding: 0; }
-.field b { color: var(--c-yellow-800); }
-.field input, .field select, .field textarea {
-  width: 100%; font: 400 16px/1.4 var(--f-body); color: var(--c-ink);
-  padding: 13px 14px; border-radius: 12px; border: 1.5px solid var(--c-grey-200); background: var(--c-grey-100);
-  transition: border-color .15s ease, background .15s ease; appearance: none; -webkit-appearance: none;
-}
-.field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231a222e' stroke-width='1.8'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 12px; padding-right: 40px; }
-.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--c-ink); background: var(--c-white); }
-.field textarea { resize: vertical; min-height: 110px; }
-.field.is-invalid input, .field.is-invalid select { border-color: #e85744; background: #fff5f3; }
-.field--checks { display: flex; flex-wrap: wrap; gap: 8px; }
-.field--checks legend { margin-bottom: 10px; width: 100%; }
-.check { position: relative; cursor: pointer; }
-.check input { position: absolute; opacity: 0; }
-.check span { display: inline-block; padding: 10px 16px; border-radius: var(--radius-pill); border: 1.5px solid var(--c-grey-200); font-size: 14px; font-weight: 500; transition: all .15s ease; }
-.check input:checked + span { background: var(--c-yellow-600); border-color: var(--c-yellow-600); }
-.check input:focus-visible + span { outline: 2px solid var(--c-focus); outline-offset: 2px; }
-.check:hover span { border-color: var(--c-ink); }
-.hp { position: absolute; left: -9999px; }
-.form__note { margin: 0; font-size: 13px; color: var(--c-grey-500); text-align: center; }
-.form__status { margin: 0; font-weight: 600; text-align: center; }
-.form__status:empty { display: none; }
-.form__status.is-ok { padding: 14px; border-radius: 12px; background: var(--c-yellow-200); }
-.form__status.is-error { color: #c43c2b; }
+.form { background: var(--c-white); color: var(--c-ink); border-radius: 24px; padding: clamp(24px, 4vw, 44px); box-shadow: 0 40px 80px -40px rgba(0,0,0,.6); }
+/* HubSpot draws the fields in its own iframe; this keeps the card from collapsing while it loads */
+.form--hubspot { min-height: 520px; }
+.form--hubspot .hs-form-frame { width: 100%; }
 .form.is-highlight { animation: pulse 1.2s ease; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,198,0,.9); } 100% { box-shadow: 0 0 0 22px rgba(255,198,0,0); } }
 
@@ -343,6 +318,7 @@ section[id] { scroll-margin-top: 84px; }
 .site-footer__phone .icon-phone { width: 16px; height: 16px; color: var(--c-yellow-600); }
 .site-footer__phone:hover { color: var(--c-yellow-600); }
 .site-footer__small { width: 100%; margin: 8px 0 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); font-size: 13px; color: rgba(255,255,255,.5); }
+.site-footer__legal { width: 100%; margin: -12px 0 0; font-size: 12px; line-height: 1.6; color: rgba(255,255,255,.45); }
 
 /* ---------- Mobile sticky CTA ---------- */
 .sticky-cta {

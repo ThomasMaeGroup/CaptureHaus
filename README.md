@@ -21,9 +21,8 @@ Push to GitHub and enable **Settings → Pages → Deploy from branch (main / ro
     PRODUCT-NOTES.md        Giraffe360 product research
 
 ## Before going live
-- [x] **Brand**: CaptureHaus logos in `assets/img/logo/` (dark = white text for dark backgrounds, light = navy text for the white scrolled header).
-- [ ] **Form**: create a form at formspree.io (or similar) and replace `YOUR_FORM_ID` in the
-      `<form action>`. Until then it runs in demo mode and shows a success message without sending.
+- [x] **Brand**: CaptureHaus logos in `assets/img/logo/` (`capturehaus-white` over the hero, `capturehaus-black` on the white scrolled header, `capturehaus-powered-white` in the footer).
+- [x] **Form**: HubSpot embed (portal 9342384, EU). Field styling is set in HubSpot's form editor, not this CSS.
 - [ ] **Media**: images/video are placeholders from giraffe360.com. Replace them with your own,
       keeping the same filenames (or update the paths). Export a poster frame for each video.
 - [ ] **FAQ TODOs**: confirm on-site capture time, delivery turnaround and coverage area

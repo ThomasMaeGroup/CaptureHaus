@@ -126,73 +126,16 @@ document.documentElement.classList.add('js');
     });
   }
 
-  /* ---------- CTA buttons prefill the form ---------- */
+  /* ---------- CTA buttons draw the eye to the (HubSpot) form ---------- */
   const form = document.querySelector('[data-form]');
-  const sectorSelect = form.querySelector('[data-sector-select]');
-
   document.querySelectorAll('a[href="#contact"]').forEach((a) => {
     a.addEventListener('click', () => {
-      const { sector, service } = a.dataset;
-      if (sector) sectorSelect.value = sector;
-      if (service) {
-        const box = form.querySelector(`input[name="services[]"][value="${CSS.escape(service)}"]`);
-        if (box) box.checked = true;
-      }
-      // Draw the eye to the form once the scroll lands
       setTimeout(() => {
         form.classList.remove('is-highlight');
         void form.offsetWidth;
         form.classList.add('is-highlight');
       }, reduceMotion ? 0 : 600);
     });
-  });
-
-  /* ---------- Form validation + submit ---------- */
-  const status = form.querySelector('[data-form-status]');
-  const setStatus = (msg, kind) => {
-    status.textContent = msg;
-    status.className = 'form__status' + (kind ? ' is-' + kind : '');
-  };
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    let firstInvalid = null;
-    form.querySelectorAll('[required]').forEach((input) => {
-      const ok = input.checkValidity();
-      input.closest('.field').classList.toggle('is-invalid', !ok);
-      if (!ok && !firstInvalid) firstInvalid = input;
-    });
-    if (firstInvalid) {
-      setStatus('Please fill in the highlighted fields.', 'error');
-      firstInvalid.focus();
-      return;
-    }
-
-    // Endpoint not configured yet: show the success state so the flow can be reviewed
-    if (form.action.includes('YOUR_FORM_ID')) {
-      setStatus('Thanks! We’ll be in touch shortly with your quote. (Demo mode: form endpoint not yet connected.)', 'ok');
-      form.reset();
-      return;
-    }
-
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    setStatus('Sending…');
-    try {
-      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
-      if (!res.ok) throw new Error(res.status);
-      setStatus('Thanks! We’ll be in touch shortly with your quote.', 'ok');
-      form.reset();
-    } catch {
-      setStatus('Sorry, something went wrong. Please try again or email us directly.', 'error');
-    } finally {
-      btn.disabled = false;
-    }
-  });
-
-  form.addEventListener('input', (e) => {
-    const field = e.target.closest('.field');
-    if (field && field.classList.contains('is-invalid') && e.target.checkValidity()) field.classList.remove('is-invalid');
   });
 
   const year = document.querySelector('[data-year]');
