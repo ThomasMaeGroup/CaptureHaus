@@ -20,6 +20,10 @@ Push to GitHub and enable **Settings → Pages → Deploy from branch (main / ro
     assets/video/           mp4 loops
     PRODUCT-NOTES.md        Giraffe360 product research
 
+## Updating CSS/JS
+The stylesheet and script links in `index.html` carry a version tag (`?v=2026-10-26`).
+Change the date whenever you edit `assets/css` or `assets/js`, so browsers and caches fetch the new files.
+
 ## Before going live
 - [x] **Brand**: CaptureHaus logos in `assets/img/logo/` (`capturehaus-white` over the hero, `capturehaus-black` on the white scrolled header, `capturehaus-powered-white` in the footer).
 - [x] **Form**: HubSpot embed (portal 9342384, EU). Field styling is set in HubSpot's form editor, not this CSS.
