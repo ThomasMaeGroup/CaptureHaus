@@ -1,0 +1,25 @@
+# Keeps the `wordpress-theme` branch in sync with wordpress/capturehaus on main.
+# That branch contains only the theme files, so Cloudways can pull it straight
+# into wp-content/themes/capturehaus.
+name: Update wordpress-theme branch
+
+on:
+  push:
+    branches: [main]
+    paths: ['wordpress/capturehaus/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Split theme folder into its own branch
+        run: |
+          git subtree split --prefix=wordpress/capturehaus -b wordpress-theme
+          git push --force origin wordpress-theme

@@ -1,0 +1,12 @@
+/*
+Theme Name: CaptureHaus
+Theme URI: https://capturehaus.co.uk
+Author: Bread & Butter Studio
+Description: CaptureHaus site theme. Pages are built from ACF Pro "Page sections" (hero, features, gallery, FAQs…). Requires Advanced Custom Fields Pro.
+Version: 1.0.0
+Requires at least: 6.5
+Requires PHP: 8.1
+Text Domain: capturehaus
+*/
+
+/* Styles live in assets/css (base.css + site.css), enqueued from functions.php. */
