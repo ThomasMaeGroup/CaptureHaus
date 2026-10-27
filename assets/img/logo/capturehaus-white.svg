@@ -1,4 +1,4 @@
-<!-- CaptureHaus logo, white wordmark with yellow icon (for dark backgrounds). Source: /Logos/v2, viewBox trimmed to the artwork. -->
+<!-- CaptureHaus logo, white wordmark with yellow icon (for dark backgrounds). Source: /Logos/v3, viewBox trimmed to the artwork. -->
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="74 71 843 156" width="843" height="156">
   <defs>
     <style>
@@ -7,7 +7,7 @@
       }
 
       .st1 {
-        fill: #f6c668;
+        fill: #ffc602;
       }
     </style>
   </defs>
