@@ -303,8 +303,11 @@ section[id] { scroll-margin-top: 84px; }
 @media (max-width: 959px) { .contact__img { display: none; } }
 
 .form { background: var(--c-white); color: var(--c-ink); border-radius: 24px; padding: clamp(24px, 4vw, 44px); box-shadow: 0 40px 80px -40px rgba(0,0,0,.6); }
-/* HubSpot draws the fields in its own iframe; this keeps the card from collapsing while it loads */
+/* HubSpot draws the fields in its own iframe; this keeps the card from collapsing while it loads.
+   Once HubSpot sizes its frame (it sets an inline height and updates it, e.g. after submitting),
+   the card follows the form's real height, so the thank-you message isn't left in a tall empty box. */
 .form--hubspot { min-height: 520px; }
+.form--hubspot:has(.hs-form-frame[style*="height"]) { min-height: 0; }
 .form--hubspot .hs-form-frame { width: 100%; }
 .form.is-highlight { animation: pulse 1.2s ease; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,198,0,.9); } 100% { box-shadow: 0 0 0 22px rgba(255,198,0,0); } }
