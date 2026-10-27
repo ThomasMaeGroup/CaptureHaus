@@ -97,6 +97,16 @@ function ch_group( $key, $title, $fields, $location, $extra = array() ) {
 	), $extra ) );
 }
 
+/* ---------- Shared choices (case study details and the case study filter) ---------- */
+function ch_sector_choices() {
+	$sectors = array( 'Estate agent / lettings', 'Restaurant / café', 'Pub / bar', 'Holiday let', 'Hotel / venue', 'Shop / retail', 'Property developer', 'Other' );
+	return array_combine( $sectors, $sectors );
+}
+function ch_service_choices() {
+	$services = array( '360° virtual tour', '2D floor plans', '3D floor plan', 'Walkthrough video', 'HDR photography', 'Drone', 'CGI renders' );
+	return array_combine( $services, $services );
+}
+
 /* ---------- Section layouts ---------- */
 function ch_section_layouts() {
 	$media_types = array(
@@ -128,6 +138,46 @@ function ch_section_layouts() {
 				ch_tab( 'Quick links' ),
 				ch_text( 'chips_label', 'Label', array( 'default_value' => 'Built for' ) ),
 				ch_repeat( 'chips', 'Links', array( ch_link( 'link', 'Link' ) ), array( 'layout' => 'table' ) ),
+			),
+		),
+
+		'page_header' => array(
+			'label'      => 'Page header (inner pages)',
+			'display'    => 'block',
+			'sub_fields' => array(
+				ch_tab( 'Text' ),
+				ch_text( 'eyebrow', 'Small line above the headline', array( 'wrapper' => array( 'width' => 50 ) ) ),
+				ch_text( 'title', 'Headline', array( 'instructions' => 'Use the page\'s main search term, e.g. "360° virtual tours in Wiltshire". Wrap a word in *asterisks* to highlight it.' ) ),
+				ch_area( 'lede', 'Intro text' ),
+				ch_lines_field( 'ticks', 'Tick points (optional)' ),
+				ch_link( 'button', 'Main button' ),
+				ch_tab( 'Media' ),
+				ch_image( 'image', 'Image', array( 'instructions' => 'Landscape, our own work. Leave empty for a text-only header.' ) ),
+				ch_url( 'embed_url', 'Live embed link (optional)', array( 'instructions' => 'Giraffe360 tour or 3D floor plan link. Adds a button that loads it over the image.' ) ),
+				ch_text( 'embed_label', 'Embed button text', array( 'default_value' => 'Explore it live', 'wrapper' => array( 'width' => 50 ) ) ),
+				ch_text( 'embed_title', 'Embed name (for screen readers)', array( 'wrapper' => array( 'width' => 50 ) ) ),
+			),
+		),
+
+		'links' => array(
+			'label'      => 'Related pages (cards)',
+			'display'    => 'block',
+			'sub_fields' => array(
+				ch_anchor(),
+				ch_text( 'eyebrow', 'Small heading', array( 'wrapper' => array( 'width' => 50 ) ) ),
+				ch_text( 'title', 'Title' ),
+				ch_area( 'lede', 'Intro text' ),
+				ch_field( 'select', 'source', 'Which pages', array(
+					'choices'       => array(
+						'children' => 'Pages under this page',
+						'parent'   => 'Pages under another page (e.g. all services)',
+						'pick'     => 'Pick pages',
+					),
+					'default_value' => 'children',
+					'instructions'  => 'Cards use each page\'s featured image and excerpt. Only published pages are shown.',
+				) ),
+				ch_when( ch_field( 'post_object', 'parent', 'Parent page', array( 'post_type' => array( 'page' ), 'return_format' => 'id', 'allow_null' => 1 ) ), '@source', array( 'parent' ) ),
+				ch_when( ch_field( 'relationship', 'pages', 'Pages', array( 'post_type' => array( 'page', 'case_study' ), 'return_format' => 'id', 'filters' => array( 'search', 'post_type' ) ) ), '@source', array( 'pick' ) ),
 			),
 		),
 
@@ -295,6 +345,8 @@ function ch_section_layouts() {
 				ch_text( 'eyebrow', 'Small heading', array( 'default_value' => 'Case studies', 'wrapper' => array( 'width' => 50 ) ) ),
 				ch_text( 'title', 'Title', array( 'default_value' => 'Recent captures' ) ),
 				ch_field( 'number', 'count', 'How many', array( 'default_value' => 3, 'min' => 1, 'max' => 12 ) ),
+				ch_field( 'select', 'sector', 'Only this sector (optional)', array( 'choices' => ch_sector_choices(), 'allow_null' => 1, 'wrapper' => array( 'width' => 50 ) ) ),
+				ch_field( 'select', 'service', 'Only this service (optional)', array( 'choices' => ch_service_choices(), 'allow_null' => 1, 'wrapper' => array( 'width' => 50 ) ) ),
 			),
 		),
 	);
@@ -338,12 +390,12 @@ add_action( 'acf/init', function () {
 	ch_group( 'case_study', 'Case study details', array(
 		ch_text( 'location', 'Location', array( 'wrapper' => array( 'width' => 50 ) ) ),
 		ch_field( 'select', 'sector', 'Sector', array(
-			'choices'       => array( 'Estate agent / lettings' => 'Estate agent / lettings', 'Restaurant / café' => 'Restaurant / café', 'Pub / bar' => 'Pub / bar', 'Shop / retail' => 'Shop / retail', 'Property developer' => 'Property developer', 'Other' => 'Other' ),
+			'choices'       => ch_sector_choices(),
 			'allow_null'    => 1,
 			'wrapper'       => array( 'width' => 50 ),
 		) ),
 		ch_field( 'checkbox', 'services', 'Services delivered', array(
-			'choices' => array( '360° virtual tour' => '360° virtual tour', '2D floor plans' => '2D floor plans', '3D floor plan' => '3D floor plan', 'Walkthrough video' => 'Walkthrough video', 'HDR photography' => 'HDR photography', 'Drone' => 'Drone', 'CGI renders' => 'CGI renders' ),
+			'choices' => ch_service_choices(),
 			'layout'  => 'horizontal',
 		) ),
 		ch_url( 'tour_url', 'Live 360° tour link', array( 'wrapper' => array( 'width' => 50 ) ) ),

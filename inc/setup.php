@@ -11,6 +11,10 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption', 'style', 'script' ) );
 	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'yoast-seo-breadcrumbs' );
+
+	// Pages get an excerpt: it's the summary on "Related pages" cards.
+	add_post_type_support( 'page', 'excerpt' );
 
 	register_nav_menus( array(
 		'primary' => __( 'Header menu', 'capturehaus' ),

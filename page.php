@@ -10,7 +10,7 @@ get_header();
 while ( have_posts() ) :
 	the_post();
 
-	if ( ! capturehaus_has_hero() ) {
+	if ( ! in_array( capturehaus_first_layout(), array( 'hero', 'page_header' ), true ) ) {
 		get_template_part( 'template-parts/page-head' );
 	}
 

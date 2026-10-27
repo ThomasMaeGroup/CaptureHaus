@@ -1,12 +1,18 @@
 <?php
 /**
- * Card for case studies and blog posts in grids.
+ * Card for case studies, pages and blog posts in grids.
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$is_case = 'case_study' === get_post_type();
-$kicker  = $is_case ? implode( ' · ', array_filter( array( get_field( 'sector' ), get_field( 'location' ) ) ) ) : get_the_date();
+$type = get_post_type();
+if ( 'case_study' === $type ) {
+	$kicker = implode( ' · ', array_filter( array( get_field( 'sector' ), get_field( 'location' ) ) ) );
+} elseif ( 'page' === $type ) {
+	$kicker = wp_get_post_parent_id() ? get_the_title( wp_get_post_parent_id() ) : '';
+} else {
+	$kicker = get_the_date();
+}
 ?>
 <article class="card reveal">
 	<a class="card__link" href="<?php the_permalink(); ?>">

@@ -20,14 +20,79 @@ function capturehaus_sections( $post_id = null ) {
 	return is_array( $sections ) ? $sections : array();
 }
 
-/** True when the current page opens with a full-bleed hero (header starts transparent). */
-function capturehaus_has_hero() {
+/** Layout name of the current page's first section ('' when it has none). */
+function capturehaus_first_layout() {
 	if ( ! is_singular() ) {
-		return false;
+		return '';
 	}
 	$sections = capturehaus_sections();
-	return ! empty( $sections ) && 'hero' === $sections[0]['acf_fc_layout'];
+	return $sections ? $sections[0]['acf_fc_layout'] : '';
 }
+
+/** True when the current page opens with a full-bleed hero (header starts transparent). */
+function capturehaus_has_hero() {
+	return 'hero' === capturehaus_first_layout();
+}
+
+/**
+ * Breadcrumb trail for inner pages. Uses Yoast's (which also feeds its schema) when Yoast is active,
+ * otherwise Home › parent pages › this page.
+ */
+function capturehaus_breadcrumbs() {
+	if ( is_front_page() ) {
+		return '';
+	}
+	if ( function_exists( 'yoast_breadcrumb' ) ) {
+		$yoast = yoast_breadcrumb( '<nav class="breadcrumbs" aria-label="' . esc_attr__( 'Breadcrumb', 'capturehaus' ) . '">', '</nav>', false );
+		if ( $yoast ) {
+			return $yoast;
+		}
+	}
+
+	$trail = array( array( __( 'Home', 'capturehaus' ), home_url( '/' ) ) );
+	if ( is_singular( 'case_study' ) ) {
+		$trail[] = array( __( 'Case studies', 'capturehaus' ), get_post_type_archive_link( 'case_study' ) );
+	} elseif ( is_page() ) {
+		foreach ( array_reverse( get_post_ancestors( get_queried_object_id() ) ) as $ancestor ) {
+			$trail[] = array( get_the_title( $ancestor ), get_permalink( $ancestor ) );
+		}
+	}
+	$current = is_singular() ? get_the_title() : wp_strip_all_tags( get_the_archive_title() );
+
+	$out = '<nav class="breadcrumbs" aria-label="' . esc_attr__( 'Breadcrumb', 'capturehaus' ) . '"><ol>';
+	foreach ( $trail as $crumb ) {
+		$out .= sprintf( '<li><a href="%s">%s</a></li>', esc_url( $crumb[1] ), esc_html( $crumb[0] ) );
+	}
+	return $out . '<li aria-current="page">' . esc_html( $current ) . '</li></ol></nav>';
+}
+
+/** Collect FAQ sections' questions; printed once as FAQPage structured data in the footer. */
+function capturehaus_faq_schema_add( $items ) {
+	foreach ( (array) $items as $faq ) {
+		if ( ! empty( $faq['question'] ) && ! empty( $faq['answer'] ) ) {
+			$GLOBALS['capturehaus_faqs'][] = array(
+				'@type'          => 'Question',
+				'name'           => wp_strip_all_tags( $faq['question'] ),
+				'acceptedAnswer' => array(
+					'@type' => 'Answer',
+					'text'  => wp_kses( wpautop( $faq['answer'] ), array( 'p' => array(), 'br' => array(), 'a' => array( 'href' => array() ), 'ul' => array(), 'ol' => array(), 'li' => array(), 'strong' => array(), 'em' => array() ) ),
+				),
+			);
+		}
+	}
+}
+
+add_action( 'wp_footer', function () {
+	if ( empty( $GLOBALS['capturehaus_faqs'] ) ) {
+		return;
+	}
+	$schema = array(
+		'@context'   => 'https://schema.org',
+		'@type'      => 'FAQPage',
+		'mainEntity' => $GLOBALS['capturehaus_faqs'],
+	);
+	echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . "</script>\n";
+} );
 
 /** Quote form appears on every page unless switched off on that page. */
 function capturehaus_show_quote() {
