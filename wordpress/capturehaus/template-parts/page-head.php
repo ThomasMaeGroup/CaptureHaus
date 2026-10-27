@@ -12,6 +12,7 @@ $intro   = $args['intro'] ?: ( is_singular() && function_exists( 'get_field' ) ?
 ?>
 <section class="page-head">
 	<div class="container">
+		<?php echo capturehaus_breadcrumbs(); // phpcs:ignore ?>
 		<?php if ( $args['eyebrow'] ) : ?><p class="eyebrow"><?php echo esc_html( $args['eyebrow'] ); ?></p><?php endif; ?>
 		<h1 class="page-head__title"><?php echo esc_html( $title ); ?></h1>
 		<?php if ( $intro ) : ?><p class="page-head__lede"><?php echo esc_html( $intro ); ?></p><?php endif; ?>

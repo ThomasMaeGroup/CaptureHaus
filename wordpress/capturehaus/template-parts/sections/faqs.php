@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 $s = $args['section'];
+capturehaus_faq_schema_add( $s['items'] );
 ?>
 <section class="section faqs"<?php echo capturehaus_anchor( $s ); // phpcs:ignore ?>>
 	<div class="container faqs__inner">

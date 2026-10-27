@@ -2,10 +2,19 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$s     = $args['section'];
+$s    = $args['section'];
+$meta = array();
+if ( ! empty( $s['sector'] ) ) {
+	$meta[] = array( 'key' => 'sector', 'value' => $s['sector'] );
+}
+if ( ! empty( $s['service'] ) ) {
+	// "Services delivered" is a checkbox, stored as a serialised list.
+	$meta[] = array( 'key' => 'services', 'value' => '"' . $s['service'] . '"', 'compare' => 'LIKE' );
+}
 $query = new WP_Query( array(
 	'post_type'           => 'case_study',
 	'posts_per_page'      => max( 1, (int) $s['count'] ),
+	'meta_query'          => $meta, // phpcs:ignore WordPress.DB.SlowDBQuery
 	'ignore_sticky_posts' => true,
 	'no_found_rows'       => true,
 ) );
