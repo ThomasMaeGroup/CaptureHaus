@@ -194,21 +194,75 @@ function capturehaus_phone_icon() {
 	return '<svg class="icon-phone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
 }
 
-/** Plain <a> links for a menu location (the design uses bare links, not <ul> lists). */
-function capturehaus_menu_links( $location ) {
+/** One menu link as a bare <a>. */
+function capturehaus_menu_link( $url, $title, $current = false, $target = '' ) {
+	return sprintf(
+		'<a href="%s"%s%s>%s</a>',
+		esc_url( $url ),
+		$current ? ' aria-current="page"' : '',
+		$target ? ' target="' . esc_attr( $target ) . '" rel="noopener"' : '',
+		esc_html( $title )
+	);
+}
+
+/**
+ * Bare <a> links for a menu location (the design uses bare links, not <ul> lists).
+ * With $dropdowns, a top-level item gets a dropdown of its sub-items; a page with no sub-items in the
+ * menu lists its published child pages instead, so new service/sector/area pages appear automatically.
+ */
+function capturehaus_menu_links( $location, $dropdowns = false ) {
 	$locations = get_nav_menu_locations();
 	if ( empty( $locations[ $location ] ) ) {
 		return '';
 	}
-	$items = wp_get_nav_menu_items( $locations[ $location ] );
-	$out   = '';
-	foreach ( (array) $items as $item ) {
+	$items    = (array) wp_get_nav_menu_items( $locations[ $location ] );
+	$current  = get_queried_object_id();
+	$children = array();
+	foreach ( $items as $item ) {
 		if ( $item->menu_item_parent ) {
-			continue; // Single-level menus only.
+			$children[ (int) $item->menu_item_parent ][] = $item;
 		}
-		$current = ( (int) $item->object_id === get_queried_object_id() && 'custom' !== $item->type ) ? ' aria-current="page"' : '';
-		$target  = $item->target ? ' target="' . esc_attr( $item->target ) . '" rel="noopener"' : '';
-		$out    .= sprintf( '<a href="%s"%s%s>%s</a>', esc_url( $item->url ), $current, $target, esc_html( $item->title ) );
+	}
+
+	$out = '';
+	foreach ( $items as $item ) {
+		if ( $item->menu_item_parent ) {
+			continue;
+		}
+		$is_current = (int) $item->object_id === $current && 'custom' !== $item->type;
+		$link       = capturehaus_menu_link( $item->url, $item->title, $is_current, $item->target );
+		if ( ! $dropdowns ) {
+			$out .= $link;
+			continue;
+		}
+
+		$subs = array();
+		foreach ( $children[ (int) $item->ID ] ?? array() as $child ) {
+			$subs[] = array( $child->url, $child->title, (int) $child->object_id === $current && 'custom' !== $child->type, $child->target );
+		}
+		if ( ! $subs && 'page' === $item->object ) {
+			foreach ( get_pages( array( 'parent' => (int) $item->object_id, 'sort_column' => 'menu_order,post_title' ) ) as $page ) {
+				$subs[] = array( get_permalink( $page ), get_the_title( $page ), $page->ID === $current, '' );
+			}
+		}
+		if ( ! $subs ) {
+			$out .= $link;
+			continue;
+		}
+
+		$id      = 'nav-sub-' . (int) $item->ID;
+		$in_here = in_array( true, array_column( $subs, 2 ), true );
+		$out    .= '<div class="nav-item' . ( $in_here ? ' is-current' : '' ) . '" data-nav-item>' . $link;
+		$out    .= sprintf(
+			'<button class="nav-item__toggle" type="button" aria-expanded="false" aria-controls="%s" data-sub-toggle><span class="sr-only">%s</span><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>',
+			esc_attr( $id ),
+			esc_html( sprintf( __( 'Show %s pages', 'capturehaus' ), $item->title ) )
+		);
+		$out .= '<div class="nav-sub" id="' . esc_attr( $id ) . '">';
+		foreach ( $subs as $sub ) {
+			$out .= capturehaus_menu_link( ...$sub );
+		}
+		$out .= '</div></div>';
 	}
 	return $out;
 }
