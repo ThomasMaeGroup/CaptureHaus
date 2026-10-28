@@ -6,6 +6,11 @@ $phone = capturehaus_option( 'phone' );
 $small = capturehaus_option( 'footer_small' );
 $legal = capturehaus_option( 'footer_legal' );
 
+// "Areas we cover": links to the published area pages, then the towns from Site settings as plain text.
+$areas_hub   = get_page_by_path( 'areas' );
+$area_pages  = $areas_hub && 'publish' === $areas_hub->post_status ? get_pages( array( 'parent' => $areas_hub->ID, 'sort_column' => 'menu_order,post_title' ) ) : array();
+$towns       = capturehaus_lines( capturehaus_option( 'footer_towns' ) );
+
 if ( capturehaus_show_quote() ) {
 	get_template_part( 'template-parts/quote' );
 }
@@ -22,6 +27,21 @@ if ( capturehaus_show_quote() ) {
 			</nav>
 			<?php if ( $phone ) : ?>
 				<a class="site-footer__phone" href="<?php echo esc_url( capturehaus_tel( $phone ) ); ?>"><?php echo capturehaus_phone_icon(); // phpcs:ignore ?><?php echo esc_html( $phone ); ?></a>
+			<?php endif; ?>
+			<?php if ( $area_pages || $towns ) : ?>
+				<p class="site-footer__areas">
+					<?php if ( $areas_hub && 'publish' === $areas_hub->post_status ) : ?>
+						<a class="site-footer__areas-title" href="<?php echo esc_url( get_permalink( $areas_hub ) ); ?>"><?php esc_html_e( 'Areas we cover', 'capturehaus' ); ?></a>
+					<?php else : ?>
+						<span class="site-footer__areas-title"><?php esc_html_e( 'Areas we cover', 'capturehaus' ); ?></span>
+					<?php endif; ?>
+					<?php foreach ( $area_pages as $page ) : ?>
+						<a href="<?php echo esc_url( get_permalink( $page ) ); ?>"><?php echo esc_html( get_the_title( $page ) ); ?></a>
+					<?php endforeach; ?>
+					<?php foreach ( $towns as $town ) : ?>
+						<span><?php echo esc_html( $town ); ?></span>
+					<?php endforeach; ?>
+				</p>
 			<?php endif; ?>
 			<?php if ( $small ) : ?>
 				<p class="site-footer__small"><?php echo esc_html( str_replace( '{year}', wp_date( 'Y' ), $small ) ); ?></p>

@@ -419,6 +419,7 @@ add_action( 'acf/init', function () {
 		ch_text( 'hubspot_form_id', 'HubSpot form ID', array( 'default_value' => '836fd6c5-0ff3-4238-8a02-c9d22cae39d6', 'wrapper' => array( 'width' => 33 ) ) ),
 		ch_text( 'hubspot_region', 'HubSpot region', array( 'default_value' => 'eu1', 'wrapper' => array( 'width' => 33 ) ) ),
 		ch_tab( 'Footer' ),
+		ch_area( 'footer_towns', 'Towns we cover', array( 'rows' => 4, 'instructions' => 'One per line. Shown in the footer after links to the area pages (pages under "Areas we cover").' ) ),
 		ch_text( 'footer_small', 'Copyright line', array( 'instructions' => '{year} is replaced with the current year.' ) ),
 		ch_area( 'footer_legal', 'Company / legal line' ),
 	), array(
