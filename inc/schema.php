@@ -29,23 +29,14 @@ function capturehaus_business_address() {
 
 /** Parent company (Bread & Butter, trading name of Thomas Mae Group Ltd) with its social profiles. */
 function capturehaus_parent_organization() {
-	$name   = capturehaus_option( 'business_parent_name' ) ?: 'Bread & Butter';
-	$url    = capturehaus_option( 'business_parent_url' ) ?: 'https://bread-butter.co.uk/';
-	$social = capturehaus_lines( capturehaus_option( 'business_parent_social' ) );
-	if ( ! $social ) {
-		$social = array(
-			'https://www.instagram.com/breadandbutterhq/',
-			'https://www.facebook.com/people/Bread-Butter/61555481204664/',
-			'https://www.linkedin.com/company/bread-butter-studio',
-		);
-	}
+	$url = capturehaus_option( 'business_parent_url' ) ?: 'https://bread-butter.co.uk/';
 	return array(
 		'@type'     => 'Organization',
 		'@id'       => trailingslashit( $url ) . '#organization',
-		'name'      => $name,
+		'name'      => capturehaus_parent_name(),
 		'legalName' => 'Thomas Mae Group Ltd',
 		'url'       => $url,
-		'sameAs'    => array_values( array_filter( $social, fn( $u ) => wp_http_validate_url( $u ) ) ),
+		'sameAs'    => capturehaus_social_links(),
 	);
 }
 

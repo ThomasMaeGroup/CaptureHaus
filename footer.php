@@ -25,9 +25,12 @@ if ( capturehaus_show_quote() ) {
 			<nav class="site-footer__nav" aria-label="<?php esc_attr_e( 'Footer', 'capturehaus' ); ?>">
 				<?php echo capturehaus_menu_links( 'footer' ); // phpcs:ignore ?>
 			</nav>
-			<?php if ( $phone ) : ?>
-				<a class="site-footer__phone" href="<?php echo esc_url( capturehaus_tel( $phone ) ); ?>"><?php echo capturehaus_phone_icon(); // phpcs:ignore ?><?php echo esc_html( $phone ); ?></a>
-			<?php endif; ?>
+			<div class="site-footer__contact">
+				<?php if ( $phone ) : ?>
+					<a class="site-footer__phone" href="<?php echo esc_url( capturehaus_tel( $phone ) ); ?>"><?php echo capturehaus_phone_icon(); // phpcs:ignore ?><?php echo esc_html( $phone ); ?></a>
+				<?php endif; ?>
+				<?php echo capturehaus_social_icons(); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in helper. ?>
+			</div>
 			<?php if ( $area_pages || $towns ) : ?>
 				<p class="site-footer__areas">
 					<?php if ( $areas_hub && 'publish' === $areas_hub->post_status ) : ?>
