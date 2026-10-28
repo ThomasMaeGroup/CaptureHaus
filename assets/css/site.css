@@ -372,6 +372,13 @@ section[id] { scroll-margin-top: 84px; }
 .site-footer__phone { display: inline-flex; align-items: center; gap: 10px; color: var(--c-white); text-decoration: none; font: 600 15px/1 var(--f-body); }
 .site-footer__phone .icon-phone { width: 16px; height: 16px; color: var(--c-yellow-600); }
 .site-footer__phone:hover { color: var(--c-yellow-600); }
+/* Areas we cover: area page links then towns, separated by dots */
+.site-footer__areas { width: 100%; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 0; margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.6); }
+.site-footer__areas > * + *:not(:nth-child(2))::before { content: "·"; margin: 0 10px; color: rgba(255,255,255,.35); }
+.site-footer__areas-title { margin-right: 14px; color: var(--c-white); font-weight: 600; text-decoration: none; }
+.site-footer__areas a { text-decoration: none; }
+.site-footer__areas a:not(.site-footer__areas-title) { color: rgba(255,255,255,.85); }
+.site-footer__areas a:hover { color: var(--c-yellow-600); }
 .site-footer__small { width: 100%; margin: 8px 0 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); font-size: 13px; color: rgba(255,255,255,.5); }
 .site-footer__legal { width: 100%; margin: -12px 0 0; font-size: 12px; line-height: 1.6; color: rgba(255,255,255,.45); }
 
