@@ -24,7 +24,7 @@ $classes = 'page-header' . ( $first ? ' page-header--first' : '' ) . ( $image ? 
 		</div>
 
 		<?php if ( $image ) : ?>
-			<div class="feature__media page-header__media">
+			<div class="feature__media page-header__media<?php echo empty( $s['contain'] ) ? '' : ' page-header__media--contain'; ?>">
 				<?php echo capturehaus_image( $image, '', '(min-width: 900px) 50vw, 100vw', $first ); // phpcs:ignore ?>
 				<?php if ( $s['embed_url'] ) : ?>
 					<button class="btn btn--signature embed-launch" type="button" data-embed="<?php echo esc_url( $s['embed_url'] ); ?>" data-embed-title="<?php echo esc_attr( $s['embed_title'] ?: wp_strip_all_tags( $s['title'] ) ); ?>"><?php echo esc_html( $s['embed_label'] ?: __( 'Explore it live', 'capturehaus' ) ); ?> <span aria-hidden="true">→</span></button>

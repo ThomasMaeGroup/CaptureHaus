@@ -153,6 +153,7 @@ function ch_section_layouts() {
 				ch_link( 'button', 'Main button' ),
 				ch_tab( 'Media' ),
 				ch_image( 'image', 'Image', array( 'instructions' => 'Landscape, our own work. Leave empty for a text-only header.' ) ),
+				ch_bool( 'contain', 'Show the whole image on a white background', array( 'instructions' => 'Use for floor plans and drawings that must not be cropped.' ) ),
 				ch_url( 'embed_url', 'Live embed link (optional)', array( 'instructions' => 'Giraffe360 tour or 3D floor plan link. Adds a button that loads it over the image.' ) ),
 				ch_text( 'embed_label', 'Embed button text', array( 'default_value' => 'Explore it live', 'wrapper' => array( 'width' => 50 ) ) ),
 				ch_text( 'embed_title', 'Embed name (for screen readers)', array( 'wrapper' => array( 'width' => 50 ) ) ),
