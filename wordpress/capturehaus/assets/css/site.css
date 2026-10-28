@@ -372,6 +372,25 @@ section[id] { scroll-margin-top: 84px; }
 .site-footer__phone { display: inline-flex; align-items: center; gap: 10px; color: var(--c-white); text-decoration: none; font: 600 15px/1 var(--f-body); }
 .site-footer__phone .icon-phone { width: 16px; height: 16px; color: var(--c-yellow-600); }
 .site-footer__phone:hover { color: var(--c-yellow-600); }
+/* Phone + social icons sit together on the right */
+.site-footer__contact { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.social { display: flex; gap: 10px; }
+.social__link { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; color: var(--c-white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.22); transition: background .15s ease, color .15s ease, box-shadow .15s ease; }
+.social__link svg { width: 18px; height: 18px; }
+.social__link:hover, .social__link:focus-visible { background: var(--c-yellow-600); color: var(--c-ink); box-shadow: none; }
+/* Desktop: logo with phone + socials beneath it on the left, menu on the right; areas and legal lines span both */
+@media (min-width: 900px) {
+  .site-footer__inner { display: grid; grid-template-columns: auto 1fr; gap: 20px 48px; align-items: center; }
+  .site-footer__nav { grid-column: 2; grid-row: 1; justify-content: flex-end; }
+  .site-footer__contact { grid-column: 1; grid-row: 2; }
+  .site-footer__areas, .site-footer__small, .site-footer__legal { grid-column: 1 / -1; }
+  .site-footer__areas { margin-top: 12px; }
+  .site-footer__legal { margin-top: -8px; }
+}
+@media (max-width: 899px) {
+  .site-footer__inner { flex-direction: column; align-items: flex-start; }
+  .site-footer__contact { width: 100%; justify-content: space-between; }
+}
 /* Areas we cover: area page links then towns, separated by dots */
 .site-footer__areas { width: 100%; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 0; margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.6); }
 .site-footer__areas > * + *:not(:nth-child(2))::before { content: "·"; margin: 0 10px; color: rgba(255,255,255,.35); }
