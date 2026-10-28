@@ -2,6 +2,7 @@
 /**
  * Structured data added to Yoast's schema graph:
  * - the Organization also becomes a ProfessionalService with phone, address and areas served (local SEO),
+ *   and is linked to its parent company Bread & Butter, whose social profiles these are,
  * - service pages (under Services) and sector pages (under Who it's for) get a Service node,
  * - names are decoded so breadcrumbs read "Who it's for", not "Who it&#8217;s for".
  * FAQ markup is added separately by the FAQs section (see capturehaus_faq_schema_add()).
@@ -23,6 +24,28 @@ function capturehaus_business_address() {
 		'addressRegion'   => 'Wiltshire',
 		'postalCode'      => $value( 'business_postcode', 'SN8 2AE' ),
 		'addressCountry'  => 'GB',
+	);
+}
+
+/** Parent company (Bread & Butter, trading name of Thomas Mae Group Ltd) with its social profiles. */
+function capturehaus_parent_organization() {
+	$name   = capturehaus_option( 'business_parent_name' ) ?: 'Bread & Butter';
+	$url    = capturehaus_option( 'business_parent_url' ) ?: 'https://bread-butter.co.uk/';
+	$social = capturehaus_lines( capturehaus_option( 'business_parent_social' ) );
+	if ( ! $social ) {
+		$social = array(
+			'https://www.instagram.com/breadandbutterhq/',
+			'https://www.facebook.com/people/Bread-Butter/61555481204664/',
+			'https://www.linkedin.com/company/bread-butter-studio',
+		);
+	}
+	return array(
+		'@type'     => 'Organization',
+		'@id'       => trailingslashit( $url ) . '#organization',
+		'name'      => $name,
+		'legalName' => 'Thomas Mae Group Ltd',
+		'url'       => $url,
+		'sameAs'    => array_values( array_filter( $social, fn( $u ) => wp_http_validate_url( $u ) ) ),
 	);
 }
 
@@ -67,6 +90,7 @@ add_filter( 'wpseo_schema_graph', function ( $graph ) {
 			$graph[ $i ]['telephone']  = $phone;
 			$graph[ $i ]['address']    = capturehaus_business_address();
 			$graph[ $i ]['areaServed'] = capturehaus_areas_served();
+			$graph[ $i ]['parentOrganization'] = capturehaus_parent_organization();
 			$graph[ $i ]['url']        = $graph[ $i ]['url'] ?? home_url( '/' );
 			if ( empty( $graph[ $i ]['image'] ) && ! empty( $graph[ $i ]['logo'] ) ) {
 				$graph[ $i ]['image'] = $graph[ $i ]['logo']; // LocalBusiness types expect an image.
