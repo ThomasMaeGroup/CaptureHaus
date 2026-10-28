@@ -45,8 +45,8 @@ section[id] { scroll-margin-top: 84px; }
 .brand__logo--light { display: none; }
 .site-header.is-scrolled .brand__logo--dark { display: none; }
 .site-header.is-scrolled .brand__logo--light { display: block; }
-.brand--footer .brand__logo { height: 58px; }
-@media (max-width: 599px) { .brand__logo { height: 34px; } .brand--footer .brand__logo { height: 45px; } }
+.brand--footer .brand__logo { height: 46px; }
+@media (max-width: 599px) { .brand__logo { height: 34px; } .brand--footer .brand__logo { height: 36px; } }
 
 .site-nav { display: flex; align-items: center; gap: 32px; }
 .site-nav a:not(.btn) { white-space: nowrap; text-decoration: none; font-weight: 500; font-size: 15px; opacity: .9; position: relative; }
@@ -364,42 +364,42 @@ section[id] { scroll-margin-top: 84px; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: #121821; color: rgba(255,255,255,.75); padding: 48px 0 calc(48px + env(safe-area-inset-bottom)); }
-.site-footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
 .brand--footer { color: var(--c-white); }
-.site-footer__nav { display: flex; flex-wrap: wrap; gap: 12px 24px; }
-.site-footer__nav a { text-decoration: none; font-size: 15px; }
-.site-footer__nav a:hover { color: var(--c-yellow-600); }
-.site-footer__phone { display: inline-flex; align-items: center; gap: 10px; color: var(--c-white); text-decoration: none; font: 600 15px/1 var(--f-body); }
+
+/* Columns: logo | Explore | Areas we cover | Get in touch (far right). Phones: stacked. */
+.site-footer__grid { display: grid; grid-template-columns: 1fr; gap: 36px; }
+@media (min-width: 1024px) {
+  .site-footer__grid { grid-template-columns: 1.3fr 1fr 1.4fr auto; gap: 40px 56px; align-items: start; }
+}
+.site-footer__label { margin: 0 0 16px; font: 600 12px/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+
+/* Lists: two columns reading downwards (--rows is set from the item count); Explore is one column on desktop */
+.site-footer__list { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(var(--rows, 5), auto); gap: 10px 24px; font-size: 15px; line-height: 1.4; }
+.site-footer__list li { white-space: nowrap; }
+.site-footer__list a { color: rgba(255,255,255,.85); text-decoration: none; }
+.site-footer__list a:hover { color: var(--c-yellow-600); }
+.site-footer__list--areas { column-gap: 32px; color: rgba(255,255,255,.6); }
+.site-footer__list--areas a { color: var(--c-white); font-weight: 600; }
+@media (min-width: 1024px) {
+  .site-footer__list--explore { grid-auto-flow: row; grid-template-columns: 1fr; grid-template-rows: none; }
+}
+
+/* Get in touch: phone with the social icons stacked beneath, right-aligned on desktop */
+.site-footer__contact { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.site-footer__contact .site-footer__label { margin: 0; }
+@media (min-width: 1024px) { .site-footer__contact { align-items: flex-end; gap: 18px; } }
+.site-footer__phone { display: inline-flex; align-items: center; gap: 10px; color: var(--c-white); text-decoration: none; white-space: nowrap; font: 600 17px/1 var(--f-body); }
 .site-footer__phone .icon-phone { width: 16px; height: 16px; color: var(--c-yellow-600); }
 .site-footer__phone:hover { color: var(--c-yellow-600); }
-/* Phone + social icons sit together on the right */
-.site-footer__contact { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
 .social { display: flex; gap: 10px; }
 .social__link { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; color: var(--c-white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.22); transition: background .15s ease, color .15s ease, box-shadow .15s ease; }
 .social__link svg { width: 18px; height: 18px; }
 .social__link:hover, .social__link:focus-visible { background: var(--c-yellow-600); color: var(--c-ink); box-shadow: none; }
-/* Desktop: logo with phone + socials beneath it on the left, menu on the right; areas and legal lines span both */
-@media (min-width: 900px) {
-  .site-footer__inner { display: grid; grid-template-columns: auto 1fr; gap: 20px 48px; align-items: center; }
-  .site-footer__nav { grid-column: 2; grid-row: 1; justify-content: flex-end; }
-  .site-footer__contact { grid-column: 1; grid-row: 2; }
-  .site-footer__areas, .site-footer__small, .site-footer__legal { grid-column: 1 / -1; }
-  .site-footer__areas { margin-top: 12px; }
-  .site-footer__legal { margin-top: -8px; }
-}
-@media (max-width: 899px) {
-  .site-footer__inner { flex-direction: column; align-items: flex-start; }
-  .site-footer__contact { width: 100%; justify-content: space-between; }
-}
-/* Areas we cover: area page links then towns, separated by dots */
-.site-footer__areas { width: 100%; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 0; margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.6); }
-.site-footer__areas > * + *:not(:nth-child(2))::before { content: "·"; margin: 0 10px; color: rgba(255,255,255,.35); }
-.site-footer__areas-title { margin-right: 14px; color: var(--c-white); font-weight: 600; text-decoration: none; }
-.site-footer__areas a { text-decoration: none; }
-.site-footer__areas a:not(.site-footer__areas-title) { color: rgba(255,255,255,.85); }
-.site-footer__areas a:hover { color: var(--c-yellow-600); }
-.site-footer__small { width: 100%; margin: 8px 0 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); font-size: 13px; color: rgba(255,255,255,.5); }
-.site-footer__legal { width: 100%; margin: -12px 0 0; font-size: 12px; line-height: 1.6; color: rgba(255,255,255,.45); }
+
+/* Copyright and company lines under a divider */
+.site-footer__bottom { margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); }
+.site-footer__small { margin: 0; font-size: 13px; color: rgba(255,255,255,.5); }
+.site-footer__legal { margin: 8px 0 0; font-size: 12px; line-height: 1.6; color: rgba(255,255,255,.45); }
 
 /* ---------- Mobile sticky CTA ---------- */
 .sticky-cta {
