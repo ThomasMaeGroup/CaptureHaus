@@ -301,7 +301,7 @@ section[id] { scroll-margin-top: 84px; }
 .process__inner { display: grid; gap: 48px; align-items: center; }
 @media (min-width: 900px) { .process__inner { grid-template-columns: 1fr 1fr; gap: 80px; } }
 .process__media { border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 5; background: #f3e4cf; }
-.process__media video { width: 100%; height: 100%; object-fit: cover; }
+.process__media video, .process__media > img { width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 899px) { .process__media { aspect-ratio: 4 / 3; } }
 .steps { list-style: none; padding: 0; margin: 32px 0 40px; display: grid; gap: 4px; }
 .steps li { display: grid; grid-template-columns: 52px 1fr; gap: 18px; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.14); }
