@@ -70,10 +70,14 @@ function capturehaus_bp_faqs( $title, $questions ) {
 	return array( 'acf_fc_layout' => 'faqs', 'eyebrow' => __( 'FAQs', 'capturehaus' ), 'title' => $title, 'items' => $items );
 }
 
-/** Copy a section (e.g. How it works, the yellow CTA band) from the homepage so new pages start with real content. */
+/**
+ * Copy a section (e.g. How it works, the yellow CTA band) from the homepage so new pages start with real content.
+ * Uses the raw saved values: formatted ones (e.g. a video as a URL) don't save back into ACF and come out blank.
+ */
 function capturehaus_bp_from_home( $layout ) {
 	$front = (int) get_option( 'page_on_front' );
-	foreach ( $front ? capturehaus_sections( $front ) : array() as $section ) {
+	$raw   = $front && function_exists( 'get_field' ) ? get_field( 'sections', $front, false ) : array();
+	foreach ( (array) $raw as $section ) {
 		if ( $layout === $section['acf_fc_layout'] ) {
 			return $section;
 		}
