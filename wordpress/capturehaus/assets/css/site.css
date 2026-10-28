@@ -378,8 +378,7 @@ section[id] { scroll-margin-top: 84px; }
 .site-footer__list li { white-space: nowrap; }
 .site-footer__list a { color: rgba(255,255,255,.85); text-decoration: none; }
 .site-footer__list a:hover { color: var(--c-yellow-600); }
-.site-footer__list--areas { column-gap: 32px; color: rgba(255,255,255,.6); }
-.site-footer__list--areas a { color: var(--c-white); font-weight: 600; }
+.site-footer__list--areas { column-gap: 32px; color: rgba(255,255,255,.85); }
 @media (min-width: 1024px) {
   .site-footer__list--explore { grid-auto-flow: row; grid-template-columns: 1fr; grid-template-rows: none; }
 }
