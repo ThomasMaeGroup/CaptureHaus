@@ -31,7 +31,29 @@ document.documentElement.classList.add('js');
   };
   toggle.addEventListener('click', () => setNav(toggle.getAttribute('aria-expanded') !== 'true'));
   nav.addEventListener('click', (e) => { if (e.target.closest('a')) setNav(false); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setNav(false); });
+
+  /* Dropdowns: the chevron opens one at a time (desktop also opens on hover/focus in CSS) */
+  const subItems = [...nav.querySelectorAll('[data-nav-item]')];
+  const setSub = (item, open) => {
+    item.classList.toggle('is-open', open);
+    item.querySelector('[data-sub-toggle]').setAttribute('aria-expanded', String(open));
+  };
+  subItems.forEach((item) => {
+    item.querySelector('[data-sub-toggle]').addEventListener('click', () => {
+      const open = !item.classList.contains('is-open');
+      subItems.forEach((other) => setSub(other, false));
+      setSub(item, open);
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('[data-nav-item]')) subItems.forEach((item) => setSub(item, false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    subItems.forEach((item) => setSub(item, false));
+    setNav(false);
+  });
 
   /* ---------- Lazy-load + autoplay videos only while on screen ---------- */
   const videos = document.querySelectorAll('[data-lazy-video]');

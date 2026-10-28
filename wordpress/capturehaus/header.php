@@ -26,7 +26,7 @@ $cta   = capturehaus_option( 'header_cta' );
 			</a>
 
 			<nav class="site-nav" id="site-nav" aria-label="<?php esc_attr_e( 'Main', 'capturehaus' ); ?>">
-				<?php echo capturehaus_menu_links( 'primary' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in helper. ?>
+				<?php echo capturehaus_menu_links( 'primary', true ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in helper. ?>
 				<?php echo capturehaus_button( $cta, 'btn btn--signature site-nav__cta' ); // phpcs:ignore ?>
 			</nav>
 
