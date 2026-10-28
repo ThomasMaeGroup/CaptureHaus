@@ -481,4 +481,6 @@ section[id] { scroll-margin-top: 84px; }
 
 /* Related pages */
 .links { background: var(--c-white); }
+.links .section-head { max-width: none; } /* titles span the card grid, e.g. "Who uses our virtual tours" on one line */
+.links .section-lede { max-width: 60ch; }
 .links + .links { padding-top: 0; }
