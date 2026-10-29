@@ -97,6 +97,7 @@ section[id] { scroll-margin-top: 84px; }
 /* Switch to the menu button before the nav runs out of room and wraps */
 @media (max-width: 1099px) {
   .nav-toggle { display: block; position: relative; z-index: 2; }
+  .site-header .brand { position: relative; z-index: 2; }
   .site-header__call { margin-left: auto; margin-right: -12px; position: relative; z-index: 2; }
   .site-nav {
     position: fixed; inset: 0; z-index: 1; flex-direction: column; justify-content: safe center; gap: 28px;
@@ -114,7 +115,8 @@ section[id] { scroll-margin-top: 84px; }
   .site-nav .nav-sub a { font: 500 19px/1.2 var(--f-body); opacity: .8; text-align: center; }
   .site-nav.is-open { opacity: 1; visibility: visible; }
   body.nav-open { overflow: hidden; }
-  body.nav-open .site-header { color: var(--c-white); background: transparent; box-shadow: none; }
+  /* No blur while open: backdrop-filter would trap the fixed menu inside the header bar */
+  body.nav-open .site-header { color: var(--c-white); background: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
   body.nav-open .site-header .brand__logo--dark { display: block; }
   body.nav-open .site-header .brand__logo--light { display: none; }
 }
