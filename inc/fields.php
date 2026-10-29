@@ -388,6 +388,18 @@ add_action( 'acf/init', function () {
 		array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'case_study' ) ),
 	), array( 'position' => 'side', 'menu_order' => 10 ) );
 
+	ch_group( 'post_links', 'Related pages', array(
+		ch_field( 'relationship', 'related_pages', 'Related services, sectors or areas', array(
+			'instructions'  => 'Pick up to 3 pages this article should send readers to (e.g. the service it explains, the town it mentions). Shown as cards under the article.',
+			'post_type'     => array( 'page' ),
+			'filters'       => array( 'search' ),
+			'max'           => 3,
+			'return_format' => 'id',
+		) ),
+	), array(
+		array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'post' ) ),
+	), array( 'menu_order' => 0 ) );
+
 	ch_group( 'case_study', 'Case study details', array(
 		ch_text( 'location', 'Location', array( 'wrapper' => array( 'width' => 50 ) ) ),
 		ch_field( 'select', 'sector', 'Sector', array(

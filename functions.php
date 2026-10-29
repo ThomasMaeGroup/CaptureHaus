@@ -13,3 +13,4 @@ require_once __DIR__ . '/inc/admin.php';
 require_once __DIR__ . '/inc/blueprints.php';
 require_once __DIR__ . '/inc/schema.php';
 require_once __DIR__ . '/inc/comments.php';
+require_once __DIR__ . '/inc/blog.php';
