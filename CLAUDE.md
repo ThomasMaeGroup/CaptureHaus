@@ -23,6 +23,7 @@ Server details, SSH and helper scripts are in `CLAUDE.local.md` (not in Git).
 - **Blueprints** (`inc/blueprints.php`): Pages → "Add service / sector / area page" creates a pre-filled draft under the Services / Who it's for / Areas hub.
 - Header menu: top-level page items get dropdowns of their child pages automatically (`capturehaus_menu_links()` in `inc/helpers.php`).
 - Footer: logo | Explore (footer menu) | Areas we cover (area pages + Site settings → Footer → Towns) | Get in touch (phone + social icons). Stacks below 1024px.
+- Blog (`inc/blog.php`, `index.php`, `single.php`): posts live under the Posts page's slug (`/blog/post-name/`, rewrite rule + 301 from other paths), "In this article" list from H2s (3+), reading time, Related pages field (up to 3) + "Keep reading". New posts start from the "CaptureHaus articles" block patterns (guide, cost, comparison, checklist, project story). Content plan: https://claude.ai/artifact/1BT6sH1zF8HUqKF2Souxgt
 - Schema (`inc/schema.php`): extends Yoast's graph – Organization + ProfessionalService (phone, address, areas served), parent organisation Bread & Butter with its socials, Service node on service/sector pages. Business details and social links: Site settings → Business (code has defaults).
 - Site settings (ACF options page): phone, header CTA, quote form (HubSpot portal/form IDs), footer lines, towns, business details.
 
@@ -58,5 +59,6 @@ Server details, SSH and helper scripts are in `CLAUDE.local.md` (not in Git).
 - [ ] Yoast logo is a screenshot; replace with the real logo (Yoast → Settings → Site representation).
 - [ ] Live: confirm `wp-content/advanced-cache.php` (Breeze) is renamed and caches purged; no SSH user on live yet.
 - [ ] SEO quick fixes (offered, not done): Services hub Yoast title is 70 chars; alt text missing on image IDs 8, 16, 18, 21, 23, 25, 35, 84, 86, 88; FAQ answers on `/faqs/` have no links; homepage repeats all 10 FAQs (trim to 4–5 + "See all FAQs").
+- [ ] Blog: set Settings → Reading → Posts page = "Blog" on staging, and on live after the next push (`page_for_posts` is in `wp_options`, which the push skips); create the 5 categories; then the 4 cornerstone articles.
 - [ ] Search Console via Site Kit + submit `/sitemap_index.xml`; Google Business Profile (16 service areas); ask clients for Google reviews.
 - [ ] Later: case studies (Chapel Gardens draft, tag by town), Bread & Butter site link + client credit links, local directories, thank-you page + HubSpot redirect, guides (phase 3 of the SEO plan: https://claude.ai/artifact/1P16EFEfKLoUijx8t6MYtZ).

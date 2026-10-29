@@ -1,6 +1,7 @@
 <?php
 /**
  * Card for case studies, pages and blog posts in grids.
+ * Optional arg: feature (wide card spanning the grid, for the newest post).
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -11,10 +12,11 @@ if ( 'case_study' === $type ) {
 } elseif ( 'page' === $type ) {
 	$kicker = wp_get_post_parent_id() ? get_the_title( wp_get_post_parent_id() ) : '';
 } else {
-	$kicker = get_the_date();
+	$category = capturehaus_post_category();
+	$kicker   = implode( ' · ', array_filter( array( $category ? $category->name : '', get_the_date() ) ) );
 }
 ?>
-<article class="card reveal">
+<article class="card reveal<?php echo ! empty( $args['feature'] ) ? ' card--feature' : ''; ?>">
 	<a class="card__link" href="<?php the_permalink(); ?>">
 		<div class="card__media">
 			<?php if ( has_post_thumbnail() ) : ?>

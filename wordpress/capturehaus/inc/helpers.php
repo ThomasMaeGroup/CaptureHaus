@@ -52,12 +52,20 @@ function capturehaus_breadcrumbs() {
 	$trail = array( array( __( 'Home', 'capturehaus' ), home_url( '/' ) ) );
 	if ( is_singular( 'case_study' ) ) {
 		$trail[] = array( __( 'Case studies', 'capturehaus' ), get_post_type_archive_link( 'case_study' ) );
+	} elseif ( ( is_singular( 'post' ) || is_category() ) && get_option( 'page_for_posts' ) ) {
+		$trail[] = array( get_the_title( (int) get_option( 'page_for_posts' ) ), get_permalink( (int) get_option( 'page_for_posts' ) ) );
 	} elseif ( is_page() ) {
 		foreach ( array_reverse( get_post_ancestors( get_queried_object_id() ) ) as $ancestor ) {
 			$trail[] = array( get_the_title( $ancestor ), get_permalink( $ancestor ) );
 		}
 	}
-	$current = is_singular() ? get_the_title() : wp_strip_all_tags( get_the_archive_title() );
+	if ( is_singular() ) {
+		$current = get_the_title();
+	} elseif ( is_home() ) {
+		$current = get_the_title( (int) get_option( 'page_for_posts' ) ) ?: __( 'Blog', 'capturehaus' );
+	} else {
+		$current = is_category() ? single_cat_title( '', false ) : wp_strip_all_tags( get_the_archive_title() );
+	}
 
 	$out = '<nav class="breadcrumbs" aria-label="' . esc_attr__( 'Breadcrumb', 'capturehaus' ) . '"><ol>';
 	foreach ( $trail as $crumb ) {
