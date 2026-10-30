@@ -58,7 +58,8 @@ Server details, SSH and helper scripts are in `CLAUDE.local.md` (not in Git).
 - [ ] Shops and retail page needs a real retail photo (currently camera-in-hand).
 - [ ] Yoast logo is a screenshot; replace with the real logo (Yoast → Settings → Site representation).
 - [ ] Live: confirm `wp-content/advanced-cache.php` (Breeze) is renamed and caches purged; no SSH user on live yet.
-- [ ] SEO quick fixes (offered, not done): Services hub Yoast title is 70 chars; alt text missing on image IDs 8, 16, 18, 21, 23, 25, 35, 84, 86, 88; FAQ answers on `/faqs/` have no links; homepage repeats all 10 FAQs (trim to 4–5 + "See all FAQs").
+- [x] SEO quick fixes done on staging 2026-10-29 (`.claude-tools/seo-quick-fixes.php`; meta backup in staging `~/tmp/seo-quick-fixes-backup-*.json`): Services hub title 57 chars, alt text on images 8, 16, 18, 21, 23, 25, 35, 84, 86, 88, links in `/faqs/` answers, homepage FAQs cut to 5 + "See all FAQs" button.
+- [ ] `/thank-you/` page made on staging (noindex, no quote form). After the next staging → live push, set the HubSpot form to redirect to https://capturehaus.co.uk/thank-you/ and count visits to it as a conversion in Analytics.
 - [ ] Blog: set Settings → Reading → Posts page = "Blog" on staging, and on live after the next push (`page_for_posts` is in `wp_options`, which the push skips); create the 5 categories; then the 4 cornerstone articles.
 - [ ] Search Console via Site Kit + submit `/sitemap_index.xml`; Google Business Profile (16 service areas); ask clients for Google reviews.
-- [ ] Later: case studies (Chapel Gardens draft, tag by town), Bread & Butter site link + client credit links, local directories, thank-you page + HubSpot redirect, guides (phase 3 of the SEO plan: https://claude.ai/artifact/1P16EFEfKLoUijx8t6MYtZ).
+- [ ] Later: case studies (Chapel Gardens draft, tag by town), Bread & Butter site link + client credit links, local directories, guides (phase 3 of the SEO plan: https://claude.ai/artifact/1P16EFEfKLoUijx8t6MYtZ).

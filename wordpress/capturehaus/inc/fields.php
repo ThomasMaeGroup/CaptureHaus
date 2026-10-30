@@ -440,8 +440,8 @@ add_action( 'acf/init', function () {
 		ch_text( 'hubspot_region', 'HubSpot region', array( 'default_value' => 'eu1', 'wrapper' => array( 'width' => 33 ) ) ),
 		ch_tab( 'Footer' ),
 		ch_area( 'footer_towns', 'Towns we cover', array( 'rows' => 4, 'instructions' => 'One per line. Shown in the footer after links to the area pages (pages under "Areas we cover").' ) ),
-		ch_text( 'footer_small', 'Copyright line', array( 'instructions' => '{year} is replaced with the current year.' ) ),
-		ch_area( 'footer_legal', 'Company / legal line' ),
+		ch_text( 'footer_small', 'Copyright line', array( 'instructions' => '{year} is replaced with the current year. Links allowed, e.g. <code>&lt;a href="https://bread-butter.co.uk/"&gt;Bread &amp; Butter Studio&lt;/a&gt;</code>.' ) ),
+		ch_area( 'footer_legal', 'Company / legal line', array( 'instructions' => 'Links allowed, as above. Other HTML is removed.' ) ),
 	), array(
 		array( array( 'param' => 'options_page', 'operator' => '==', 'value' => 'capturehaus-settings' ) ),
 	) );

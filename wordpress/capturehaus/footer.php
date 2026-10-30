@@ -5,6 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 $phone = capturehaus_option( 'phone' );
 $small = capturehaus_option( 'footer_small' );
 $legal = capturehaus_option( 'footer_legal' );
+// Footer lines may contain links (<a href="…">), nothing else.
+$footer_html = array( 'a' => array( 'href' => array(), 'target' => array(), 'rel' => array() ) );
 
 // "Areas we cover": links to the published area pages, then the towns from Site settings as plain text.
 $areas_hub  = get_page_by_path( 'areas' );
@@ -63,10 +65,10 @@ if ( capturehaus_show_quote() ) {
 			<?php if ( $small || $legal ) : ?>
 				<div class="site-footer__bottom">
 					<?php if ( $small ) : ?>
-						<p class="site-footer__small"><?php echo esc_html( str_replace( '{year}', wp_date( 'Y' ), $small ) ); ?></p>
+						<p class="site-footer__small"><?php echo wp_kses( str_replace( '{year}', wp_date( 'Y' ), $small ), $footer_html ); ?></p>
 					<?php endif; ?>
 					<?php if ( $legal ) : ?>
-						<p class="site-footer__legal"><?php echo esc_html( $legal ); ?></p>
+						<p class="site-footer__legal"><?php echo wp_kses( $legal, $footer_html ); ?></p>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
