@@ -401,6 +401,8 @@ section[id] { scroll-margin-top: 84px; }
 .site-footer__bottom { margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); }
 .site-footer__small { margin: 0; font-size: 13px; color: rgba(255,255,255,.5); }
 .site-footer__legal { margin: 8px 0 0; font-size: 12px; line-height: 1.6; color: rgba(255,255,255,.45); }
+.site-footer__small a, .site-footer__legal a { color: inherit; text-decoration-color: rgba(255,255,255,.3); text-underline-offset: 3px; }
+.site-footer__small a:hover, .site-footer__legal a:hover { color: var(--c-white); text-decoration-color: var(--c-yellow-600); }
 
 /* ---------- Mobile sticky CTA ---------- */
 .sticky-cta {
