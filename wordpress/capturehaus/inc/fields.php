@@ -388,7 +388,8 @@ add_action( 'acf/init', function () {
 		array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'case_study' ) ),
 	), array( 'position' => 'side', 'menu_order' => 10 ) );
 
-	ch_group( 'post_links', 'Related pages', array(
+	ch_group( 'post_links', 'Article options', array(
+		ch_bool( 'lead_contain', 'Show the whole featured image', array( 'instructions' => 'For floor plans and drawings: shows the whole image, smaller and on white, instead of cropping it to fill the banner and cards.' ) ),
 		ch_field( 'relationship', 'related_pages', 'Related services, sectors or areas', array(
 			'instructions'  => 'Pick up to 3 pages this article should send readers to (e.g. the service it explains, the town it mentions). Shown as cards under the article.',
 			'post_type'     => array( 'page' ),
