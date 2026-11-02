@@ -18,7 +18,7 @@ $cta   = capturehaus_option( 'header_cta' );
 
 	<a class="skip-link" href="#main"><?php esc_html_e( 'Skip to content', 'capturehaus' ); ?></a>
 
-	<header class="site-header" data-header>
+	<header class="site-header<?php echo capturehaus_has_hero() ? '' : ' is-scrolled'; ?>" data-header>
 		<div class="container site-header__inner">
 			<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?> home">
 				<img class="brand__logo brand__logo--dark" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/logo/capturehaus-white.svg' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="843" height="156">
