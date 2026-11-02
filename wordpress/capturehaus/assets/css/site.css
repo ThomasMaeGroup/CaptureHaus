@@ -400,7 +400,7 @@ section[id] { scroll-margin-top: 84px; }
 /* Copyright and company lines under a divider */
 .site-footer__bottom { margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); }
 .site-footer__small { margin: 0; font-size: 13px; color: rgba(255,255,255,.5); }
-.site-footer__legal { margin: 8px 0 0; font-size: 12px; line-height: 1.6; color: rgba(255,255,255,.45); }
+.site-footer__legal { margin: 8px 0 0; font-size: 12px; line-height: 1.6; color: rgba(255,255,255,.55); }
 .site-footer__small a, .site-footer__legal a { color: inherit; text-decoration-color: rgba(255,255,255,.3); text-underline-offset: 3px; }
 .site-footer__small a:hover, .site-footer__legal a:hover { color: var(--c-white); text-decoration-color: var(--c-yellow-600); }
 
@@ -484,7 +484,7 @@ section[id] { scroll-margin-top: 84px; }
 .breadcrumbs { margin: 0 0 24px; font: 500 14px/1.4 var(--f-body); color: var(--c-grey-500); }
 .breadcrumbs ol { display: flex; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; }
 .breadcrumbs li + li::before { content: "›"; margin: 0 8px; color: var(--c-grey-400); }
-.breadcrumbs a { color: var(--c-grey-600); text-decoration: none; }
+.breadcrumbs a { color: var(--c-grey-600); text-decoration: underline; text-decoration-color: var(--c-grey-400); text-underline-offset: 3px; }
 .breadcrumbs a:hover { color: var(--c-ink); text-decoration: underline; text-decoration-color: var(--c-yellow-600); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .breadcrumbs [aria-current], .breadcrumbs .breadcrumb_last { color: var(--c-ink); }
 

@@ -40,6 +40,7 @@ $featured   = is_home() && ! is_paged();
 		<?php endif; ?>
 
 		<?php if ( have_posts() ) : ?>
+			<h2 class="sr-only"><?php esc_html_e( 'Articles', 'capturehaus' ); ?></h2>
 			<div class="card-grid">
 				<?php
 				while ( have_posts() ) {
