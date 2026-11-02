@@ -30,7 +30,7 @@ while ( have_posts() ) :
 	<article class="section article<?php echo $contents ? ' article--has-contents' : ''; ?>">
 		<div class="container">
 			<?php if ( has_post_thumbnail() ) : ?>
-				<figure class="article__lead"><?php the_post_thumbnail( 'full', array( 'sizes' => '(min-width: 1280px) 1200px, 100vw', 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?></figure>
+				<figure class="article__lead<?php echo function_exists( 'get_field' ) && get_field( 'lead_contain' ) ? ' article__lead--contain' : ''; ?>"><?php the_post_thumbnail( 'full', array( 'sizes' => '(min-width: 1280px) 1200px, 100vw', 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?></figure>
 			<?php endif; ?>
 			<div class="article__grid">
 				<?php if ( $contents ) : ?>

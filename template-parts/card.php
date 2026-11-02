@@ -18,7 +18,7 @@ if ( 'case_study' === $type ) {
 ?>
 <article class="card reveal<?php echo ! empty( $args['feature'] ) ? ' card--feature' : ''; ?>">
 	<a class="card__link" href="<?php the_permalink(); ?>">
-		<div class="card__media">
+		<div class="card__media<?php echo 'post' === $type && get_field( 'lead_contain' ) ? ' card__media--contain' : ''; ?>">
 			<?php if ( has_post_thumbnail() ) : ?>
 				<?php the_post_thumbnail( 'large', array( 'sizes' => '(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw', 'loading' => 'lazy' ) ); ?>
 			<?php endif; ?>
