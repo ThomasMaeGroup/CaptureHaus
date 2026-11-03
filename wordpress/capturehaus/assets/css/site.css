@@ -481,7 +481,7 @@ section[id] { scroll-margin-top: 84px; }
 .case-media__more a { color: var(--c-ink); text-decoration-color: var(--c-yellow-600); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
 /* Breadcrumbs (ours, or Yoast's spans) */
-.breadcrumbs { margin: 0 0 24px; font: 500 14px/1.4 var(--f-body); color: var(--c-grey-500); }
+.breadcrumbs { margin: 0 0 24px; font: 500 14px/1.4 var(--f-body); color: var(--c-grey-600); }
 .breadcrumbs ol { display: flex; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; }
 .breadcrumbs li + li::before { content: "›"; margin: 0 8px; color: var(--c-grey-400); }
 .breadcrumbs a { color: var(--c-grey-600); text-decoration: underline; text-decoration-color: var(--c-grey-400); text-underline-offset: 3px; }
